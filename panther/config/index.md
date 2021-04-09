@@ -1,10 +1,10 @@
 ---
 layout: home
-title: Sending events to Panther
+title: Sending Events to Panther
 nav_order: 3
 permalink: /panther/config
 layout: template
-description: Configuring events reception
+description: Panther make it easy to ingest events by providing downloadable pre-configured configuration files for popular logging software such as Ryslog and NXLog
 image: /img/panther-event-sources.jpeg
 twitter:
   card: summary_large_image
