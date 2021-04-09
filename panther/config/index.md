@@ -1,10 +1,13 @@
 ---
 layout: home
-title: Client Configuration
+title: Sending events to Panther
 nav_order: 3
 permalink: /panther/config
 layout: template
 description: Configuring events reception
+image: /img/panther-event-sources.jpeg
+twitter:
+  card: summary_large_image
 ---
 
 # Overview
