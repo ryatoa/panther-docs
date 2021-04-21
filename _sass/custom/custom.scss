@@ -69,6 +69,17 @@
     top: 0px;
     z-index: 3;
   }
+
+  // scroll-to anchors beneath the sticky #main-header
+  #main-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      scroll-margin-top: 80px;
+    }
+  }
 }
 
 .search-input {
