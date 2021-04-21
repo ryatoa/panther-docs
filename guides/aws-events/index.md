@@ -79,7 +79,7 @@ internet -down-> Panther
 
 Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} code from GitHub with:
 
-  ```console
+  ```shell
     git clone https://github.com/OpenAnswers/panther-aws-events.git
   ```
 
@@ -91,7 +91,7 @@ If you are familiar with AWS and accessing it from the commanline and having a f
 
   [**AWS Events (quickstart)**](./quickstart.md)
 
-For a more detailed step-by-step approch:
+For a more detailed step-by-step approach:
 
   [**AWS Events (detailed)**](./in-detail.md)
 

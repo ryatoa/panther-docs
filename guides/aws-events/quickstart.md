@@ -18,7 +18,7 @@ This guide will walk you through deploying an AWS Lambda function to collect eve
 
 The quick installation assumes you are familiar with using AWS from the command line, with the necessary tools installed, and credentials.  In short you will need `aws-sam-cli` which can be installed with:
 
-```console
+```
 pip3 install aws-sam-cli
 ```
 
@@ -33,11 +33,14 @@ During the deployment you will be prompted for the following values:
 
 From a `git clone` of [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} the following commands will deploy panther-aws-events.
 
-* ```console
+* ```
+  git clone https://github.com/OpenAnswers/panther-aws-events.git
+  cd panther-aws-events
+ 
   sam build
   sam deploy --guided
   ```
 
-For more information on setting up the AWS command line utilities, please refer to the [Detailed](./in-detail.md) guide.
+For more information on setting up the AWS command line utilities, please refer to the [AWS events (detailed)](./in-detail.md) guide.
 
 Further instructions for how to send some test events to Panther are on the [AWS events testing](./testing.md) page.

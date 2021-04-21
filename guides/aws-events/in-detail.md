@@ -23,7 +23,7 @@ Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and
 
 To install SAM, rather than installing the linux version of homebrew (as AWS recommends), you can just get away with:
 
-```console
+```
 pip3 install aws-sam-cli
 ```
 
@@ -37,16 +37,19 @@ You will require the following details from your Panther console:
 
 Once you have those details you can build the deployment package and then deploy it to AWS:
 
-```bash
-> sam build
-> sam deploy --guided
+```
+  git clone https://github.com/OpenAnswers/panther-aws-events.git
+  cd panther-aws-events
+ 
+  sam build
+  sam deploy --guided
 ```
 
 __Note__: _SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
 You will then be asked a series of questions to deploy the code to your account, the process will look similar to this:
 
-```bash
+```
 > sam deploy --guided
 
 Configuring SAM deploy
@@ -344,7 +347,7 @@ To run the lambda function with the test data first update the `env.json` file w
 
 Then invoke the lambda function with:
 
-```console
+```
 sam build
 sam local invoke Events2PantherFunction -e events/<filename>.json --env-vars env.json
 ```
