@@ -230,11 +230,11 @@ However you can also disable that one and create your own more specific rules.
 
 Rules can be accessed from two locations:
 
-[console.aws.amazon.com/cloudwatch/home](https://console.aws.amazon.com/cloudwatch/home)
+[console.aws.amazon.com/cloudwatch/home](https://console.aws.amazon.com/cloudwatch/home){:target="_blank"}
 
 Or here:
 
-[console.aws.amazon.com/events/home](https://console.aws.amazon.com/events/home)
+[console.aws.amazon.com/events/home](https://console.aws.amazon.com/events/home){:target="_blank"}
 
 On either page you should click on the 'Create rule' button.
 
@@ -298,10 +298,10 @@ So to edit the message generated for an event that is already handled, all you h
 
 ## 4.1. Currently supported event types
 
-- [AWS API Call via CloudTrail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html#events-for-services-not-listed)
-- [EC2 Instance State-change Notification](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html#ec2_event_type)
-- [GuardDuty Finding](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings_cloudwatch.html#guardduty_findings_cloudwatch_format)
-- [Security Hub Findings](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cwe-event-formats.html)
+- [AWS API Call via CloudTrail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html#events-for-services-not-listed){:target="_blank"}
+- [EC2 Instance State-change Notification](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html#ec2_event_type){:target="_blank"}
+- [GuardDuty Finding](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings_cloudwatch.html#guardduty_findings_cloudwatch_format){:target="_blank"}
+- [Security Hub Findings](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cwe-event-formats.html){:target="_blank"}
 - Config Configuration Item Change
 
 To handle a new event type you should replicate the approach used for other events:

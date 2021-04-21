@@ -15,7 +15,7 @@ After installation has completed a new lambda function will have been registered
 
 ## Simulating an EC2 instance state change
 
-Find your lambda functions, if you imported with default values it will be named **AWS-Events2Panther** and should be listed on [aws.amazon.com/lambda/home](https://console.aws.amazon.com/lambda/home)
+Find your lambda functions, if you imported with default values it will be named **AWS-Events2Panther** and should be listed on [aws.amazon.com/lambda/home](https://console.aws.amazon.com/lambda/home){:target="_blank"}
 
 You should see something like ![Default lambda function](./aws-lambda-panther.png)
 

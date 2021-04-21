@@ -28,10 +28,10 @@ pip3 install aws-sam-cli
 During the deployment you will be prompted for the following values:
 
 |`APIToken`| Panther [HTTP API Key](../panther/../../panther/admin/index.md#ap-keys) this will be a long 32 character string of random letters and numbers |
-|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support) or self hosted hostname |
+|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self hosted hostname |
 
 
-From a `git clone` of [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events) the following commands will deploy panther-aws-events.
+From a `git clone` of [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} the following commands will deploy panther-aws-events.
 
 * ```console
   sam build

@@ -17,15 +17,15 @@ AWS events are either region specific or global, depending on the service. So to
 
 The NodeJS Javascript code can be changed by you if you wish to support different AWS events, and/or send different data as part of the message.
 
-Events can be sent to either an [app.panther.support](https://app.panther.support) instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console).
+Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.
 
 
 ## Checklist
 
-In order to send events from your AWS estate to [Panther](https://app.panther.support) you will need to have the following:
+In order to send events from your AWS estate to [Panther](https://app.panther.support){:target="_blank"} you will need to have the following:
 
 |`APIToken`| Panther [HTTP API Key](../panther/../../panther/admin/index.md#ap-keys) this will be a long 32 character string of random letters and numbers |
-|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support) or self hosted hostname |
+|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self hosted hostname |
 
 
 
@@ -77,7 +77,7 @@ internet -down-> Panther
 
 ## Get the code
 
-Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events) code from GitHub with:
+Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} code from GitHub with:
 
   ```console
     git clone https://github.com/OpenAnswers/panther-aws-events.git

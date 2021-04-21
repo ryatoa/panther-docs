@@ -9,7 +9,7 @@ description: About Panther Event monitoring
 
 
 ## Background
-Panther has been designed and developed by [Open Answers](https://www.openanswers.co.uk/) to meet our operational needs and those of our customers, having provided support and system monitoring services over three decades.
+Panther has been designed and developed by [Open Answers](https://www.openanswers.co.uk/){:target="_blank"} to meet our operational needs and those of our customers, having provided support and system monitoring services over three decades.
 
 Within the open source and SaaS monitoring space there are myriads of monitoring tools available. The typical monitoring toolset implements **active** monitoring, where the status of a component is checked or a synthetic transaction is tested repeatedly on a schedule. The outcome of that probe/status check/transaction etc is an **active** monitoring event.
 

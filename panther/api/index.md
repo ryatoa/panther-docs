@@ -18,7 +18,7 @@ The purpose of the page is to allow the supported API fields to be
 manually input and then automatically formatted into the JSON
 structure required by Panther. The result may then either be submitted
 to the application from the page or copied into another utility, such
-as [curl](https://curl.haxx.se/) - for which an example input is
+as [curl](https://curl.haxx.se/){:target="_blank"} - for which an example input is
 generated at the bottom of the page.
 
 # Creating an Event
@@ -67,7 +67,7 @@ displayed in the `Response Body` box at the bottom of the page.
 Alternatively, events can be sent using a different application by
 submitting the message displayed in the `Request Body` box as POST
 data to the address displayed in the `URL` box. One common method
-would be to use the example [curl](https://curl.haxx.se/) command line
+would be to use the example [curl](https://curl.haxx.se/){:target="_blank"} command line
 shown in the `Curl` box.
 
 

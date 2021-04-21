@@ -20,14 +20,14 @@ Login for the first time as the `admin` user using the password you gave during 
 
 ### Logging in (`docker-compose.yml`)
 
-**Note** Instructions for launching the Docker images are on [github.com/openanswers/panther-core](https://github.com/OpenAnswers/panther-core)
+**Note** Instructions for launching the Docker images are on [github.com/openanswers/panther-core](https://github.com/OpenAnswers/panther-core){:target="_blank"}
 
 After starting the Panther containers for the first time an initial password will have been set. Unless configured that defaults will be:
 
 | Username | `admin` |
 | Password | `admin`|
 
-This can be changed through the `environment` settings in [`docker-compose.yml`](https://github.com/OpenAnswers/panther-core/blob/master/docker-compose.yml) e.g.
+This can be changed through the `environment` settings in [`docker-compose.yml`](https://github.com/OpenAnswers/panther-core/blob/master/docker-compose.yml){:target="_blank"} e.g.
 
 ```yaml
   event-console:
@@ -51,7 +51,7 @@ Clicking on `Open Console` will take you to the [Console](../console/index.md#ov
 ... this example shows that the Panther instance currently has two events in it. These particular messages are coming from the instance's _internal_ `syslogd` and `http` agents which will send periodic "keep-alive" events to indicate that they are healthy. Here, `Agent http is alive` and `Agent syslogd` are the details of the event, contained within the `summary` field (see next section). Double-click on an event to explore it a bit more.
 
 ## Anatomy of an Event
-A Panther Event is comprised of a number of data fields that are analagous to [The Syslog Protocol](https://tools.ietf.org/html/rfc5424).
+A Panther Event is comprised of a number of data fields that are analagous to [The Syslog Protocol](https://tools.ietf.org/html/rfc5424){:target="_blank"}.
 
 | Field            | Meaning                                                         | Example value                                                                     |
 | ---------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -118,13 +118,13 @@ More details on this are available in [the API section](../api/index.md).
 The freely available software packages listed below can act as event
 sources for Panther.
 
-| Software                                                          | Official Website                                               | Panther Configuration                                              |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------ |
-| ![NXLog](./media/nxlog-logo.png){:height="30px" width="80px"}     | [Documentation](https://nxlog.co/documentation)                | [Linux](../config#nxlog-linux), [Windows](../config#nxlog-windows) |
-| ![Rsyslog](./media/rsyslog-logo.png){:height="30px" width="80px"} | [Documentation](https://www.rsyslog.com/doc/master/index.html) | [Linux](../config#rsyslog-linux)                                   |
-| Syslog-ng                                                         | TODO                                                           | TODO                                                               |
-| Log4j                                                             | TODO                                                           | TODO                                                               |
-| Log4Net                                                           | TODO                                                           | TODO                                                               |
+| Software                                                          | Official Website                                                                 | Panther Configuration                                              |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| ![NXLog](./media/nxlog-logo.png){:height="30px" width="80px"}     | [Documentation](https://nxlog.co/documentation){:target="_blank"}                | [Linux](../config#nxlog-linux), [Windows](../config#nxlog-windows) |
+| ![Rsyslog](./media/rsyslog-logo.png){:height="30px" width="80px"} | [Documentation](https://www.rsyslog.com/doc/master/index.html){:target="_blank"} | [Linux](../config#rsyslog-linux)                                   |
+| Syslog-ng                                                         | TODO                                                                             | TODO                                                               |
+| Log4j                                                             | TODO                                                                             | TODO                                                               |
+| Log4Net                                                           | TODO                                                                             | TODO                                                               |
 
 Examples of approaches that can be used to monitor infrastructure and applications.
 
