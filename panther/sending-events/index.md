@@ -32,9 +32,10 @@ refer to the relevant sections for their own specific software.
 
  * [Introduction (all systems)](#introduction)
  * [Download configuration archive (all systems)](#rsyslog-configuration)
- * [Rsyslog (linux)](./rsyslog#rsyslog-linux)
- * [NXLog (linux)](./nxlog#nxlog-configuration-linux)
- * [NXLog (windows)](./nxlog#nxlog-configuration-windows)
+ * [Rsyslog (linux)](./rsyslog.md#rsyslog-linux)
+ * [NXLog (linux)](./nxlog.md#nxlog-configuration-linux)
+ * [NXLog (windows)](./nxlog.md#nxlog-configuration-windows)
+ * [AWS](./aws.md)
 
 # Introduction
 
