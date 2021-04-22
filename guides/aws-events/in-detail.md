@@ -310,7 +310,7 @@ You can setup multiple filter rules, each looking for a different type of event 
 
 # 4. Configuring the messages sent to panther
 
-The messages sent to Panther are generated in the Javascript Lambda function using the information extracted from the json AWS event data.
+The messages sent to Panther are generated in the Javascript Lambda function using the information extracted from the JSON AWS event data.
 
 So to edit the message generated for an event that is already handled, all you have to do is find the correct function and edit it to put the data you whish in the correct fields.
 
