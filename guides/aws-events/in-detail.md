@@ -367,6 +367,11 @@ sam build
 sam local invoke Events2PantherFunction -e events/<filename>.json --env-vars env.json
 ```
 
+__Note__ replace `<filename>.json` with an actual file, some examples are provided in [the code](https://github.com/OpenAnswers/panther-aws-events/tree/master/events){:target="_blank"}:
+
+  - [`events/guardduty1.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty1.json){:target="_blank"}
+  - [`events/guardduty2.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty2.json){:target="_blank"}
+
 Sample events can sometimes be found in the AWS documentation, or can be output to the console / CloudWatch Logs. The function will automatically output the event json when the processing code causes an exception, or a handler is not available for that particular type of event.
 
 ## 4.3. Checking the logs in AWS
