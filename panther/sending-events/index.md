@@ -32,9 +32,9 @@ refer to the relevant sections for their own specific software.
 
  * [Introduction (all systems)](#introduction)
  * [Download configuration archive (all systems)](#rsyslog-configuration)
- * [Rsyslog (linux)](#rsyslog-linux)
- * [NXLog (linux)](#nxlog-linux)
- * [NXLog (windows)](#nxlog-windows)
+ * [Rsyslog (linux)](./rsyslog#rsyslog-linux)
+ * [NXLog (linux)](./nxlog#nxlog-configuration-linux)
+ * [NXLog (windows)](./nxlog#nxlog-configuration-windows)
 
 # Introduction
 

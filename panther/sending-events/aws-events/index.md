@@ -1,6 +1,6 @@
 ---
 layout: home
-title: AWS Events 
+title: AWS Events2 
 nav_order: 4
 permalink: /panther/sending-events/aws-events
 layout: template

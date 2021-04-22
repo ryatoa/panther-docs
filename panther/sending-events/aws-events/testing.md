@@ -18,7 +18,7 @@ After installation has completed a new lambda function will have been registered
 
 Find your lambda functions, if you imported with default values it will be named **AWS-Events2Panther** and should be listed on [aws.amazon.com/lambda/home](https://console.aws.amazon.com/lambda/home){:target="_blank"}
 
-You should see something like ![Default lambda function](./aws-lambda-panther.png)
+You should see something like ![Default lambda function](./media/aws-lambda-panther.png)
 
 ### Sample test data
 
