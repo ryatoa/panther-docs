@@ -339,7 +339,13 @@ A Panther json message uses the following structure:
 }
 ```
 
-Note: The severity is on a scale from 1-5, with 5=critical, 4=major, 3=minor, 2=warning, and 1=indeterminate
+Note: The severity is on a scale from 0-5, with 
+ - 0=clear
+ - 1=indeterminate
+ - 2=warning, 
+ - 3=minor, 
+ - 4=major, 
+ - 5=critical
 
 ## 4.2. Testing changes locally
 

@@ -49,10 +49,10 @@ It should look something like this:
 
 * Click the ![Invoke button](./invoke.png) button to send the event.
 
-* Verify in you Panther console that the event was received (it may take a couple of seconds)
+* Verify in your Panther console that the event was received (it may take a couple of seconds)
 
 ![EC2 event arrived in Panther](./example-ec2-in-panther.png)
 
-* ![Invoke button](./invoke.png) it a couple more times and the `tally` in Panther has increased:
+* Repeat sending events, and the corresponding Panther Event will start increasing, e.g.
 
 ![EC2 event de-duplicated](./example-ec2-in-panther-incremented.png)
