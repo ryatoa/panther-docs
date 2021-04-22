@@ -1,11 +1,12 @@
 ---
 layout: home
-title: AWS events (detailed)
-nav_order: 3
-permalink: /guides/aws-events-in-detail
+title: Detailed
+nav_order: 2
+permalink: /panther/sending-events/aws-events-detail
 layout: template
 description: AWS events to Panther
-parent: Panther guides
+parent: AWS Events
+grand_parent: Sending Events to Panther
 image: /img/panther_logo_thin_with_aws.png
 ---
 

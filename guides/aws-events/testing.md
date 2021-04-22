@@ -1,11 +1,12 @@
 ---
 layout: home
 title: AWS events testing
-nav_order: 4
-permalink: /guides/aws-events-testing
+nav_order: 3
+permalink: /panther/sending-events/aws-events-testing
 layout: template
 description: Sending test events to Panther
-parent: Panther guides
+parent: AWS Events
+grand_parent: Sending Events to Panther
 image: /img/panther_logo_thin_with_aws.png
 ---
 

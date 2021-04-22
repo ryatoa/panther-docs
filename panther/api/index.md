@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Api
+title: API Console
 nav_order: 8
 permalink: /panther/api
 layout: template
