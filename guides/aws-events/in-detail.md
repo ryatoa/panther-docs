@@ -156,10 +156,10 @@ Successfully created/updated stack - AWS-Events2Panther in eu-west-3
 
 There are two approaches to configuring which events will trigger the Lambda function.
 
-* Setting up new triggers in the AWS Console.
+* [Adding new yaml config to the SAM template](#31-generating-new-event-triggers-using-sam) (`template.yaml`) that will generate the triggers for you.
 
-* Adding new yaml config to the SAM template (`template.yaml`) that will generate the triggers for you.
-
+* [Setting up new triggers in the AWS Console](#32-setting-up-event-triggers-in-the-aws-console).
+ 
 Depending on your use case you may prefer either approach.
 
 ## 3.1. Generating new event triggers using SAM
@@ -241,17 +241,27 @@ Or here:
 
 On either page you should click on the 'Create rule' button.
 
-Under _Define pattern_, select _Event pattern_, then select _Pre-defined pattern by service_, select 'AWS', then select 'All Services'. This will behave in the same way as CloudTrail, by passing all AWS events to the target.
+Under __Define pattern__, select __Event pattern__, then select __Pre-defined pattern by service__, select '__AWS__', then select '__All Services__'. This will behave in the same way as CloudTrail, by passing all AWS events to the target. As shown below:
 
-Next, under _Select targets_ ensure the target is set to 'Lambda function', and then select the function id for the one you uploaded. It will be in the format: AWS-Events2Panther-{stack name}
+![Event pattern - AWS - All Services](./media/aws-define-pattern.png)
+
+
+Next, under __Select targets__ ensure the target is set to '__Lambda function__', and then select the function id for the one you uploaded. It will be in the format: AWS-Events2Panther-{stack name}
+
+![Select targets - lambda function](./media/aws-select-targets.png)
+
 
 Once done, you can click on the _Create_ button at the bottom of the page.
 
 ## 3.3 Advanced event filtering
 
-If you wish to only send events to Panther for particular services, you can select 'Custom pattern', and paste in a config such as the following:
+If you wish to only send events to Panther for particular services, you can select '__Custom pattern__', and paste in an event pattern.
 
-To get all events from multiple services:
+![example custom pattern](./media/aws-define-custom-pattern.png)
+
+__Examples of patterns__
+
+### 3.3.1 All events from multiple services:
 
 ```json
 {
@@ -262,7 +272,7 @@ To get all events from multiple services:
 }
 ```
 
-To get a particular event type from a service:
+### 3.3.2 A particular event type from a service:
 
 ```json
 {
@@ -275,7 +285,9 @@ To get a particular event type from a service:
 }
 ```
 
-To filter for events created when a running ec2 instance has a state change to terminated:
+### 3.3.3 EC2 instance state change
+
+When an instance has been terminated
 
 ```json
 {
@@ -287,9 +299,12 @@ To filter for events created when a running ec2 instance has a state change to t
 }
 ```
 
+
+### 3.3.4 Filtering more complex events
+
 Filtering of events can be much more complex, here is Amazons guide:
 
-https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html
+[docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html){:target="_blank"}
 
 You can setup multiple filter rules, each looking for a different type of event from different services that al have the same target Lambda function.
 
