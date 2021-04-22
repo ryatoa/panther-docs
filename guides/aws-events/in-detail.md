@@ -13,11 +13,11 @@ image: /img/panther_logo_thin_with_aws.png
 
 This project is built and uploaded to AWS using the Serverless Application Model:
 
-https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html
+[docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html){:target="_blank"}
 
 So to easily build and upload the code to AWS, you must install SAM first.
 
-Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  https://docs.aws.amazon.com/cli/index.html
+Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}
 
 ## 1.1 Installing SAM on Linux
 
@@ -32,7 +32,7 @@ pip3 install aws-sam-cli
 You will require the following details from your Panther console:
 
 |`APIToken`| Panther [HTTP API Key](../panther/../../panther/admin/index.md#ap-keys) this will be a long 32 character string of random letters and numbers |
-|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support) or self hosted hostname |
+|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self hosted hostname |
 
 
 Once you have those details you can build the deployment package and then deploy it to AWS:
@@ -222,7 +222,7 @@ Or if you wish to match CloudFormation lambda code deployment in eu-west-1 or eu
 
 AWS documentation to help you create more filters can be found here (although it's in json):
 
-https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html
+[docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html){:target="_blank"}
 
 
 ## 3.2. Setting up event triggers in the AWS console
@@ -345,9 +345,9 @@ Note: The severity is on a scale from 1-5, with 5=critical, 4=major, 3=minor, 2=
 
 SAM can use a local docker image to test Lambda functions on your machine.
 
-To run the lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken`
+To run the lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken` as described in the [checklist](./index.md#checklist).
 
-**Note** to create a Panther `APIToken` please consult the [Panther documentation](https://openanswers.github.io/panther-docs/panther/admin#api-keys)
+**Note** to create a Panther `APIToken` please consult the [admin documentation](../../panther/admin/index.md#api-keys)
 
 
 ```
@@ -373,9 +373,9 @@ Sample events can sometimes be found in the AWS documentation, or can be output 
 
 Lambda functions produce log output that is put into a CloudWatch Log group.
 
-Navigate to: https://console.aws.amazon.com/cloudwatch/home
+Navigate to: [console.aws.amazon.com/cloudwatch/home](https://console.aws.amazon.com/cloudwatch/home){:target="_blank"}
 
-Then look for the log group in the format: /aws/lambda/AWS-Events2Panther
+Then look for the log group in the format: `/aws/lambda/AWS-Events2Panther`
 
 The log group will contain multiple logs written each time the function is triggered by an event.
 
