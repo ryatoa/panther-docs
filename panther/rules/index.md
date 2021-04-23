@@ -57,38 +57,45 @@ followed by the [Global Rules](./global.md#global-rules) and, finally, any optio
 
   A basic rule has a `name` followed by a *Select* verb, such as `match`, and an *Action* verb, such as `discard`:
 
-      name: 'Rule name'
-      match:
-        some_field: value
-      discard: true
+  ```yaml
+    name: 'Rule name'
+    match:
+      some_field: value
+    discard: true
+  ```
 
   Multiple *Select*s are interpreted as logical "and" operations.
   This example is equivalent to "*Select* WHERE `some_field` **matches** the regular expression `/value/` AND where `other_field` **equals** `value`":
 
-      match:
-        some_field: !!js/regexp /value/
-      equals:
-        other_field: value
-
+  ```yaml
+    match:
+      some_field: !!js/regexp /value/
+    equals:
+      other_field: value
+  ```
 
   Multiple *Actions* can be specified too:
 
-      discard: true
-      stop: true
+  ```yaml
+    discard: true
+    stop: true
+  ```
 
   A *RuleSet*, which groups the rules into logical areas, is made up of an array of *Rules*. These are processed in order, until the last rule is found or a `stop` or `stop_ruleset` action is encountered:
 
-      - name: 'Rule name'
-        match:
-          some_field: value
-        set:
-          new_field: 17
+  ```yaml
+    - name: 'Rule name'
+      match:
+        some_field: value
+      set:
+        new_field: 17
 
-      - name: 'No junk'
-        equals:
-          my_field: 'linux'
-        set:
-          that_field: 'Torvalds'
+    - name: 'No junk'
+      equals:
+        my_field: 'linux'
+      set:
+        that_field: 'Torvalds'
+  ```
 
   There are multiple *RuleSets* used during processing. The *Global* *RuleSet* is processed first, followed
   by any *Group* rules. Only one group will be matched, based on the *Select* verbs, and its rules then processed.

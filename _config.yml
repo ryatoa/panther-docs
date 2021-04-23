@@ -4,6 +4,7 @@ baseurl: "/panther-docs" # the subpath of your site, e.g. /blog
 url: "https://vinceoa.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/img/panther_logo_thin.png"
 permalink: pretty
+highlighter: rouge
 
 image:
   path: "img/panther_logo_thin.png"

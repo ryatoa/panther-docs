@@ -6,6 +6,7 @@ gem "jekyll", ">= 3.9"
 gem "just-the-docs", "~> 0.3.3"
 gem "github-pages", group: :jekyll_plugins
 gem "html-proofer"
+gem "rouge"
 gem "activesupport", "= 6.0.3.5"
 
 group :jekyll_plugins do
