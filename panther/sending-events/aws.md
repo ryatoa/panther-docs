@@ -76,7 +76,7 @@ This project is built and uploaded to AWS using the Serverless Application Model
 
 So to easily build and upload the code to AWS, you must install SAM first.
 
->_Please note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
+>_Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
 
 ## Installing SAM on Linux
 
@@ -112,7 +112,7 @@ sam build
 sam deploy --guided
 ```
 
->_Please Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
+>_Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
 You will then be asked a series of questions to deploy the code to your account and will be prompted for the following values
   - `APIToken`
@@ -418,7 +418,7 @@ Has the following structure:
 }
 ```
 
-Note: The severity is on a scale from 0-5, with 
+The `severity` is on a scale from 0-5, with
  - 0=clear
  - 1=indeterminate
  - 2=warning, 
@@ -432,7 +432,7 @@ SAM can use a local docker image to test Lambda functions on your machine.
 
 To run the lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken` as described in the [checklist](#checklist).
 
->_Please Note: to create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)_
+>_Note: to create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)_
 
 
 ```
