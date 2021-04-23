@@ -21,12 +21,15 @@ following
 
 Once installed, the steps to integrate NXLog with Panther are:
 
- * [install configuration files](#nl-install)
- * [restart nxlog](#nl-restart)
+ * [download the configuration archive](#download-linux-configuration-archive)
+ * [install configuration files](#install-configuration-files-on-linux)
+ * [restart nxlog](#restart-nxlog-on-linux)
 
-<a name="nl-install" id="nl-install"></a>
+## Download Linux Configuration Archive
 
-## Install the configuration files
+__TODO__
+
+## Install configuration files on Linux
 
 To begin with, download the configuration archive
 [as described above.](#download-configuration-archive)
@@ -46,9 +49,8 @@ if one already exists.
 Apart from overwriting the main `nxlog.conf`, this will extract the
 required certificates and key files into a new `panther` sub-directory.
 
-<a name="nl-restart" id="nl-restart"></a>
 
-## Restart NXLog
+## Restart NXLog on Linux
 
 If NXLog has been installed according to
 [the deployment guide,](https://nxlog.co/documentation/nxlog-user-guide/deployment.html){:target="_blank"}
@@ -65,9 +67,7 @@ possible to restart NXLog by calling the init script directly:
 
 ```console
 [root@localhost /etc/nxlog]# /etc/init.d/nxlog restart
-
 ```
-<a name="nxlog-windows" id="nxlog-windows"></a>
 
 # NXLog Configuration (Windows)
 
@@ -79,12 +79,16 @@ Install the package by running the installer, but also see
 
 Once installed, the steps to integrate NXLog with Panther are:
 
- * [install configuration files](#nw-install)
- * [restart nxlog](#nw-restart)
+ * [download configuration archive](#download-windows-configuration-archive)
+ * [install configuration files](#install-configuration-files-on-windows)
+ * [restart nxlog](#restart-nxlog-on-windows)
 
-<a name="nw-install" id="nw-install"></a>
+## Download Windows Configuration Archive
 
-## Install the configuration files
+__TODO__
+
+
+## Install configuration files on Windows
 
 Once the Windows configuration archive has been downloaded
 [as described above,](#download-configuration-archive) the contents of
@@ -109,9 +113,8 @@ directory, along with a new `nxlog.conf` into the `conf`
 directory. Note that the system may ask for confirmation when writing
 to the `cert` directory, owing to its permissions.
 
-<a name="nw-restart" id="nw-restart"></a>
 
-## Restart NXLog
+## Restart NXLog on Windows
 
 The NXLog installer should have configured the service to be started
 automatically on the next system boot.

@@ -23,11 +23,32 @@ it, or [visit the official website.](https://www.rsyslog.com/){:target="_blank"}
 Once rsyslog is installed, the necessary steps to integrate it with
 Panther are:
 
- * [install supporting gnutls packages](#rl-gnutls)
- * [install configuration files](#rl-install)
- * [restart rsyslog](#rl-restart)
+ * [download the configuration archive](#downloading-configuration-archive)
+ * [install supporting gnutls packages](#install-gnu-tls-support-for-rsyslog)
+ * [install configuration files](#install-the-configuration-files)
+ * [restart rsyslog](#restart-rsyslog)
 
-<a name="gnutls" id="rl-gnutls"></a>
+
+## Downloading Configuration Archive 
+
+The configuration archives are available on the `Admin` page. Select this using the tab from the main menu at the top of the Panther page.
+
+![Select the admin page](./media/console-admin-page.png)
+
+The drop-down selector offers archives for the supported software and operating systems.
+
+![Download the configuration archive](./media/console-admin-download.png)
+
+Select the appropriate option for your client and click the `Download` button.
+
+The archives are downloaded in an appropriate format for each system:
+
+- Linux archives are provided in uncompressed `tar` format, while
+- Windows archives are built using `zip`.
+
+(Note that the same certificates and keys are provided in each archive, so for custom configurations the choice of download is unimportant.)
+
+
 
 ## Install GNU-TLS support for rsyslog
 
@@ -49,7 +70,6 @@ main rsyslog package.
 ```console
 # yum install rsyslog-gnutls
 ```
-<a name="rl-install" id="rl-install"></a>
 
 ## Install the configuration files
 
@@ -79,8 +99,6 @@ archive above:
 $IncludeConfig /etc/rsyslog-client.d/*.conf
 ```
 
-<a name="restart" id="rl-restart"></a>
-
 ## Restart rsyslog
 
 The new configuration should take effect automatically when the system
@@ -89,8 +107,7 @@ have the changes take effect immediately.
 
 ### systemd based systems
 
-Systems using the newer systemd service manager, such as Ubuntu 18 and
-CentOS 7, can restart the rsyslog service as follows:
+Systems using the newer systemd service manager, such as Ubuntu 18 and CentOS 7, can restart the rsyslog service as follows:
 
 ```console
 # systemctl restart rsyslog
@@ -98,11 +115,9 @@ CentOS 7, can restart the rsyslog service as follows:
 
 ### init.d based systems
 
-Systems using the older System V init service management scripts can
-generally restart the rsyslog service as follows:
+Systems using the older System V init service management scripts can generally restart the rsyslog service as follows:
 
 ```console
 # /etc/init.d/rsyslog restart
 ```
-<a name="nxlog-windows" id="nxlog-linux"></a>
 

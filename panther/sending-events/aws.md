@@ -108,16 +108,16 @@ In order to send events from your AWS estate to [Panther](https://app.panther.su
 
 Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} code from GitHub with:
 
-  ```
-    git clone https://github.com/OpenAnswers/panther-aws-events.git
-    cd panther-aws-events
-  ```
+```
+git clone https://github.com/OpenAnswers/panther-aws-events.git
+cd panther-aws-events
+```
 
 Build and deploy the code to AWS with:
 
 ```
-  sam build
-  sam deploy --guided
+sam build
+sam deploy --guided
 ```
 
 __Note__: _SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._

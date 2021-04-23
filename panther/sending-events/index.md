@@ -31,10 +31,9 @@ All users should read the general advice in the introduction, but then
 refer to the relevant sections for their own specific software.
 
  * [Introduction (all systems)](#introduction)
- * [Download configuration archive (all systems)](#rsyslog-configuration)
- * [Rsyslog (linux)](./rsyslog.md#rsyslog-linux)
- * [NXLog (linux)](./nxlog.md#nxlog-configuration-linux)
- * [NXLog (windows)](./nxlog.md#nxlog-configuration-windows)
+ * [Download configuration archive (all systems)](#downloading-configuration-archive)
+ * [Rsyslog (Linux)](./rsyslog.md#rsyslog-configuration)
+ * [NXLog](./nxlog.md) ([Linux](./nxlog.md#nxlog-configuration-linux) \| [Windows](./nxlog.md#nxlog-configuration-windows))
  * [AWS](./aws.md)
 
 # Introduction
@@ -57,29 +56,4 @@ The configuration process therefore is to download an appropriate
 archive, to load it in a suitable location for the software, and to
 carry out any remaining package or system specific tasks.
 
-<a name="download" id="download"></a>
-## Downloading Configuration Archive 
-
-The configuration archives are available on the `Admin` page. Select
-this using the tab from the main menu at the top of the Panther page.
-
-![Select the admin page](./media/console-admin-page.png)
-
-The drop-down selector offers archives for the supported software and
-operating systems.
-
-![Download the configuration archive](./media/console-admin-download.png)
-
-Select the appropriate option for your client and click the `Download`
-button.
-
-The archives are downloaded in an appropriate format for each system:
-Linux archives are provided in uncompressed `tar` format, while
-Windows archives are built using `zip`.
-
-(Note that the same certificates and keys are provided in each
-archive, so for custom configurations the choice of download is
-unimportant.)
-
-<a name="rsyslog-linux" id="rsyslog-linux"></a>
 

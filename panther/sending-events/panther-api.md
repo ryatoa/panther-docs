@@ -13,4 +13,4 @@ twitter:
 
 # Overview
 
-TODO - [Please read](../api)
+TODO - Please see the [API Console](../api) documentation
