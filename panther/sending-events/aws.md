@@ -465,9 +465,11 @@ Sample events can sometimes be found in the AWS documentation, or can be output 
 
 Lambda functions produce log output that is put into a CloudWatch Log group.
 
-Navigate to: [console.aws.amazon.com/cloudwatch/home](https://console.aws.amazon.com/cloudwatch/home){:target="_blank"}
+Navigate to: [console.aws.amazon.com/cloudwatch/home](https://console.aws.amazon.com/cloudwatch/home#logsV2:log-groups){:target="_blank"}
 
 Then look for the log group in the format: `/aws/lambda/AWS-Events2Panther`
+
+![log groups](./media/aws-log-groups.png)
 
 The log group will contain multiple logs written each time the function is triggered by an event.
 
