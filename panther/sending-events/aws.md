@@ -85,7 +85,7 @@ This project is built and uploaded to AWS using the Serverless Application Model
 
 So to easily build and upload the code to AWS, you must install SAM first.
 
-Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}
+>_Please note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
 
 ## Installing SAM on Linux
 
@@ -120,7 +120,7 @@ sam build
 sam deploy --guided
 ```
 
-__Note__: _SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
+>_Please Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
 You will then be asked a series of questions to deploy the code to your account and will be asked for `APIToken` and `ConsoleFQDN`.
 
@@ -430,7 +430,7 @@ SAM can use a local docker image to test Lambda functions on your machine.
 
 To run the lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken` as described in the [checklist](#checklist).
 
-**Note** to create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)
+>_Please Note: to create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)_
 
 
 ```
@@ -511,7 +511,7 @@ It should look something like this:
 
 ![EC2 event arrived in Panther](./media/example-ec2-in-panther.png)
 
-* Repeat sending events, and the corresponding Panther Event will start increasing, e.g.
+* Repeat sending events, and the corresponding Panther Events tally will start increasing, e.g.
 
 ![EC2 event de-duplicated](./media/example-ec2-in-panther-incremented.png)
 

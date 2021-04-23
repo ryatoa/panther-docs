@@ -21,11 +21,9 @@ documentation published by the relevant providers, specific
 configuration is also required to enable communication with Panther.
 
 This page provides a guide to the configuration required once the
-logging software has been installed. (Please note that the
-instructions here are based on clean installations of the logging
-software -- if site-specific configurations have already been made,
-then it is necessary to download the Panther resources and integrate
-them following the providers' documentation.)
+logging software has been installed. 
+
+> _Please Note that the instructions here are based on clean installations of the logging software -- if site-specific configurations have already been made, then it is necessary to download the Panther resources and integrate them following the providers' documentation._
 
 All users should read the general advice in the introduction, but then
 refer to the relevant sections for their own specific software.

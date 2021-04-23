@@ -45,8 +45,7 @@ If no matching event identifier is found, then a new event is created.
 
 Timestamps are also stored for each event.
 
-**Please note** that when events are deduplicated via the `identifier` field, some information may be lost. 
-For example, the PID of a process can change regularly, but is not included in the identifier by default, so multiple PIDs may aggregate into a single event.
+>_Please note that when events are deduplicated via the `identifier` field, some information may be lost. For example, the PID of a process can change regularly, but is not included in the identifier by default, so multiple PIDs may aggregate into a single event._
 
 ## Field Mapping
 
