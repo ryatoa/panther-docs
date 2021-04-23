@@ -15,7 +15,7 @@ This guide will quickly and easily allow a user to deploy a lambda function to c
 
 AWS events are either region specific or global, depending on the service. So to get all events to your panther console you will have to deploy this lambda function to each of your accounts and regions that you wish to monitor.
 
-The NodeJS Javascript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
+The NodeJS JavaScript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
 
 Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.  
 
@@ -383,7 +383,7 @@ Filtering of events can be much more complex, here is Amazons guide:
 
 [docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html){:target="_blank"}
 
-You can setup multiple filter rules, each looking for a different type of event from different services that al have the same target Lambda function.
+You can setup multiple filter rules, each looking for a different type of event from different services that all have the same target Lambda function.
 
 # Configuring the messages sent to panther
 
