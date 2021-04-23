@@ -20,7 +20,7 @@ While users should generally install the software according to the
 documentation published by the relevant providers, specific
 configuration is also required to enable communication with Panther.
 
-This page provides a guide to the configuration required once the
+This and subsequent pages provide a guide to the configuration required once any necessary
 logging software has been installed. 
 
 > _Please Note that the instructions here are based on clean installations of the logging software -- if site-specific configurations have already been made, then it is necessary to download the Panther resources and integrate them following the providers' documentation._
@@ -36,22 +36,18 @@ refer to the relevant sections for their own specific software.
 
 # Introduction
 
-Event data is sent securely to the Panther server from local clients
-via an encrypted connection using Transport Layer Security (TLS). This
-requires the use of certificates and unique client keys which are
-generated specifically for your Panther instance during the sign-up
-process.
+## app.panther.support (syslog)
 
-Since these certificates and keys are needed to configure client event
-loggers, they are bundled into "configuration archives" along with
-sample configuration files specific to the software, and made
-available for download by Panther.
+Event data is sent securely to the Panther server from local clients via an encrypted connection using Transport Layer Security (TLS). This requires the use of certificates and unique client keys which are generated specifically for your Panther instance during the sign-up process. 
 
-You should ensure that the `client.key` included in your configuration
-archive is kept securely to prevent its use by anyone else.
+Since these certificates and keys are needed to configure client event loggers, they are bundled into "configuration archives" along with sample configuration files specific to the software, and made available for download by Panther ([app.panther.support](https://app.panther.support){:target="_blank"}).
 
-The configuration process therefore is to download an appropriate
-archive, to load it in a suitable location for the software, and to
+You should ensure that the `client.key` included in your configuration archive is kept securely to prevent its use by anyone else.
+
+The configuration process therefore is to download an appropriate archive, to load it in a suitable location for the software, and to
 carry out any remaining package or system specific tasks.
 
+## Self Hosted Panther
+
+**TODO**
 

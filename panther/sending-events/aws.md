@@ -11,13 +11,13 @@ image: /img/panther_logo_thin_with_aws.png
 
 # AWS-Events2Panther
 
-This guide will quickly and easily allow a user to deploy a lambda function to collect AWS events and send them to Panther via it's HTTP API.
+This guide will quickly and easily allow a user to deploy a lambda function to collect AWS events and send them to Panther via it's [HTTP API](../api/index.md).
 
 AWS events are either region specific or global, depending on the service. So to get all events to your panther console you will have to deploy this lambda function to each of your accounts and regions that you wish to monitor.
 
-The NodeJS Javascript code can be changed by you if you wish to support different AWS events, and/or send different data as part of the message.
+The NodeJS Javascript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
 
-Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.
+Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.  
 
 
 ## System Design
@@ -61,17 +61,8 @@ internet -down-> Panther
 
 
 1. The Lambda function is triggered whenever a filter matches an event.
-2. It will then format the event data into a Panther json message.
-3. Then it will send the message to your Panther console using your private API key.
-
-
-
-## Running 
-
-Once the code has been successfully registered in AWS you should start seeing a stream of events into Panther.  
-Manual testing can be done following the [**AWS Events testing**](./testing.md) instructions.
-
-Further event filtering check [Configuring the captured events](./in-detail.md#3-configuring-the-captured-events)
+2. It will then format the event data into a [Panther JSON](#panther-json-message) message.
+3. Then it will send the message to your Panther console using your private [API key](../api/index.md#api-key).
 
 
 
@@ -97,11 +88,12 @@ pip3 install aws-sam-cli
 
 ## Checklist
 
-In order to send events from your AWS estate to [Panther](https://app.panther.support){:target="_blank"} you will need to have the following:
+In order to send events from your AWS estate to [Panther](https://app.panther.support){:target="_blank"} you will need to have the following values:
 
-|`APIToken`| Panther [HTTP API Key](../panther/../../panther/admin/index.md#ap-keys) this will be a long 32 character string of random letters and numbers |
+|`APIToken`| Panther [HTTP API Key](/../admin/index.md#api-keys) this will be a long 32 character string of random letters and numbers |
 |`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self hosted hostname |
 
+You will be prompted for these values when deploying to AWS SAM.
 
 
 ## Installing AWS-Events2Panther
@@ -122,7 +114,9 @@ sam deploy --guided
 
 >_Please Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
-You will then be asked a series of questions to deploy the code to your account and will be asked for `APIToken` and `ConsoleFQDN`.
+You will then be asked a series of questions to deploy the code to your account and will be prompted for the following values
+  - `APIToken`
+  - `ConsoleFQDN`
 
 The process will look similar to this:
 
@@ -229,6 +223,12 @@ Events2PantherFunction - AWS Events to Panther Lambda Function ARN              
 Successfully created/updated stack - AWS-Events2Panther in eu-west-3
 ```
 
+## Running 
+
+Once the code has been successfully registered in AWS you should start seeing a stream of events into Panther.  
+Manual testing can be done following the [**Sending some test events**](#sending-some-test-events) instructions.
+
+
 # Configuring the captured events
 
 There are two approaches to configuring which events will trigger the Lambda function.
@@ -256,7 +256,7 @@ You will see that an event trigger has been configured (commented out) that will
 
 This event pattern will specify the fields to match up when filtering the CloudWatchEvents.
 
-If the filter pattern matches that of the event json, it will trigger the function.
+If the filter pattern matches that of the event JSON, it will trigger the function.
 
 If you wish to capture some events, you can uncomment the following line from the start of the _lambdaHandler_ function in the `e2p/e2p.js` file:
 
@@ -264,7 +264,7 @@ If you wish to capture some events, you can uncomment the following line from th
     console.log("Event Received: " + JSON.stringify(event, null, 2));
 ```
 
-This will write the event json to the CloudWatch Logs log group related to the lambda function.
+This will write the event JSON to the CloudWatch Logs log group related to the lambda function.
 
 Some other examples of pattern filters are, any ec2 instances that are terminated:
 
@@ -297,7 +297,7 @@ Or if you wish to match CloudFormation lambda code deployment in eu-west-1 or eu
             - cloudformation.amazonaws.com
 ```
 
-AWS documentation to help you create more filters can be found here (although it's in json):
+AWS documentation to help you create more filters can be found here (although it's in JSON):
 
 [docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html](https://docs.aws.amazon.com/eventbridge/latest/userguide/filtering-examples-structure.html){:target="_blank"}
 
@@ -401,11 +401,13 @@ So to edit the message generated for an event that is already handled, all you h
 
 To handle a new event type you should replicate the approach used for other events:
 
-1. Create a new function that accepts a json object representing the event data
+1. Create a new function that accepts a JSON object representing the AWS event data.
 2. The source event may contain an array of child events, create one or more Panther message from the source data. The Panther message format can be seen below.
-3. Add a new case statement into lambdaHandler function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more panther messages.
+3. Add a new case statement into `exports.lambdaHandler()` function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more panther messages.
 
-A Panther json message uses the following structure:
+## Panther JSON message
+
+Has the following structure:
 
 ```json
 "event": {
@@ -455,7 +457,7 @@ __Note__ replace `<filename>.json` with an actual file, some examples are provid
   - [`events/guardduty1.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty1.json){:target="_blank"}
   - [`events/guardduty2.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty2.json){:target="_blank"}
 
-Sample events can sometimes be found in the AWS documentation, or can be output to the console / CloudWatch Logs. The function will automatically output the event json when the processing code causes an exception, or a handler is not available for that particular type of event.
+Sample events can sometimes be found in the AWS documentation, or can be output to the console / CloudWatch Logs. The function will automatically output the event JSON when the processing code causes an exception, or a handler is not available for that particular type of event.
 
 ## Checking the logs in AWS
 
