@@ -1,13 +1,14 @@
 #toc {
   @include mq(xl) {
     position: fixed;
-    top: 5rem;
+    top: 3rem;
     right: 20px;
     overflow-y: auto;
   }
 
   .toc-entry {
     font-size: $font-size-4;
+    line-height: 1.5;
   }
 }
 #toc::before {
