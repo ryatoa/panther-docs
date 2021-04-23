@@ -316,9 +316,11 @@ Or here:
 
 [console.aws.amazon.com/events/home](https://console.aws.amazon.com/events/home){:target="_blank"}
 
-On either page you should click on the 'Create rule' button.
+On either page you should click on the '__Create rule__' button.
 
-Under __Define pattern__, select __Event pattern__, then select __Pre-defined pattern by service__, select '__AWS__', then select '__All Services__'. This will behave in the same way as CloudTrail, by passing all AWS events to the target. As shown below:
+Under __Define pattern__, select __Event pattern__, then select __Pre-defined pattern by service__, select '__AWS__', then select '__All Services__'. This will behave in the same way as CloudTrail, by passing all AWS events to the target. 
+
+As shown below:
 
 ![Event pattern - AWS - All Services](./media/aws-define-pattern.png)
 
@@ -328,7 +330,7 @@ Next, under __Select targets__ ensure the target is set to '__Lambda function__'
 ![Select targets - lambda function](./media/aws-select-targets.png)
 
 
-Once done, you can click on the _Create_ button at the bottom of the page.
+Once done, you can click on the __Create__ button at the bottom of the page.
 
 # Advanced event filtering
 
