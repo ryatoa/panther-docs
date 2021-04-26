@@ -71,21 +71,24 @@ internet -down-> Panther
 
 # Step-by-step
 
-This project is built and uploaded to AWS using the Serverless Application Model:
+This project is built and uploaded to AWS using the Serverless Application Model (SAM):
 
 [docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html){:target="_blank"}
 
-So to easily build and upload the code to AWS, you must install SAM first.
+So to easily build and upload the code to AWS, you must first install SAM.
 
 >_Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
 
-## Installing SAM on Linux
+## Installing SAM on Linux (simple)
 
-To install SAM, rather than installing the linux version of homebrew (as AWS recommends), you can just get away with:
+To install SAM, you can use the [Python 3 installer](https://docs.python.org/3/installing/index.html){:target="_blank"} version:
 
 ```
 pip3 install aws-sam-cli
 ```
+
+The official [Amazon SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html){:target="_blank} install guide covers Windows, macOS and Linux and is slightly more involved.
+
 
 ## Checklist
 
@@ -106,7 +109,7 @@ git clone https://github.com/OpenAnswers/panther-aws-events.git
 cd panther-aws-events
 ```
 
-Build and deploy the code to AWS with:
+Build and deploy the code to AWS with: 
 
 ```
 sam build
@@ -115,7 +118,7 @@ sam deploy --guided
 
 >_Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
-You will then be asked a series of questions to deploy the code to your account and will be prompted for the following values
+You will then be asked a series of questions to deploy the code to your account and will be prompted for the following values:
   - `APIToken`
   - `ConsoleFQDN`
 
@@ -226,7 +229,8 @@ Successfully created/updated stack - AWS-Events2Panther in eu-west-3
 
 ## Running 
 
-Once the code has been successfully registered in AWS you should start seeing a stream of events into Panther.  
+Once the code has been successfully registered in AWS you should start seeing a stream of events into your Panther console.
+
 Manual testing can be done following the [**Sending some test events**](#sending-some-test-events) instructions.
 
 
@@ -455,7 +459,7 @@ sam build
 sam local invoke Events2PantherFunction -e events/<filename>.json --env-vars env.json
 ```
 
-__Note__ replace `<filename>.json` with an actual file, some examples are provided in [the code](https://github.com/OpenAnswers/panther-aws-events/tree/master/events){:target="_blank"}:
+__Note__ replace `<filename>.json` with an actual file, some examples are provided in the [GitHub repository](https://github.com/OpenAnswers/panther-aws-events/tree/master/events){:target="_blank"}:
 
   - [`events/guardduty1.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty1.json){:target="_blank"}
   - [`events/guardduty2.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty2.json){:target="_blank"}
