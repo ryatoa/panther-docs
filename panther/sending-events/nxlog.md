@@ -27,7 +27,23 @@ Once installed, the steps to integrate NXLog with Panther are:
 
 ## Download Linux Configuration Archive
 
-__TODO__
+The configuration archives are available on the `Admin` page. Select this using the tab from the main menu at the top of the Panther page.
+
+![Select the admin page](./media/console-admin-page.png)
+
+The drop-down selector offers archives for the supported software and operating systems.
+
+![Download the configuration archive](./media/console-admin-download-expanded.png)
+
+Select the appropriate option for your client and click the `Download` button.
+
+The archives are downloaded in an appropriate format for each system:
+
+- Linux archives are provided in uncompressed `tar` format, while
+- Windows archives are built using `zip`.
+
+> _Note: that the same certificates and keys are provided in each archive, so for custom configurations the choice of download is unimportant._
+
 
 ## Install configuration files on Linux
 
