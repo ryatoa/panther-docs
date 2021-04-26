@@ -88,10 +88,6 @@ See [the API documentation](../api/index.md) for more information.
 
 TODO
 
-# Integrations
-
-TODO
-
 # Console Fields
 
 TODO
