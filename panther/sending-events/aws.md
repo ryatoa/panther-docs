@@ -387,7 +387,7 @@ Filtering of events can be much more complex, here is Amazons guide:
 
 You can setup multiple filter rules, each looking for a different type of event from different services that all have the same target Lambda function.
 
-# Configuring the messages sent to panther
+# Configuring the messages sent to Panther
 
 The messages sent to Panther are generated in the JavaScript Lambda function using the information extracted from the JSON AWS event data.
 
@@ -405,7 +405,7 @@ To handle a new event type you should replicate the approach used for other even
 
 1. Create a new function that accepts a JSON object representing the AWS event data.
 2. The source event may contain an array of child events, create one or more Panther message from the source data. The Panther message format can be seen below.
-3. Add a new case statement into `exports.lambdaHandler()` function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more panther messages.
+3. Add a new case statement into `exports.lambdaHandler()` function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more Panther messages.
 
 ## Panther JSON message
 

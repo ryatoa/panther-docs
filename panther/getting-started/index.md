@@ -64,7 +64,7 @@ A Panther Event is comprised of a number of data fields that are analagous to [T
 | group            | Grouping applied to this event (determined by Group Rules)      | `Windows Servers`                                                                 |
 | identifier       | Unique identifier for this event (used for de-duplication)      | `10740737389554512696`                                                            |
 | node             | Hostname of the device/server that originated the event         | `MYWINSERVER123`                                                                  |
-| owner            | The panther user that has taken ownership of this event         | `dave`                                                                            |
+| owner            | The Panther user that has taken ownership of this event         | `dave`                                                                            |
 | severity         | Event Severity (0-5)                                            | `5` _(Warning)_                                                                   |
 | state_change     | Date/time when the last change to the event occurred            | `2019-10-04T12:22:49.066Z`                                                        |
 | summary          | Event details                                                   | `ERROR_OUTOFMEMORY: Not enough storage` `is available to complete this operation` |
