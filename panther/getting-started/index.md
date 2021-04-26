@@ -15,8 +15,8 @@ The (beta) cloud-based version of Panther is accessible at [app.panther.support]
 
 ## Using Panther for the First Time
 
-### Logging in (SaaS)
-Login for the first time as the `admin` user using the password you gave during Sign-up - this is the default user account that will be used to [administer](../admin/index.md) Panther for the first time.
+### Logging in (app.panther.support)
+Login for the first time as the `admin` user using the password you gave during Sign-up - this is the default user account that will be used to [administer](../admin/index.md) Panther for the first time.  Additional users can then be created from the [admin tab](../admin/index.md#user-administration).
 
 ### Logging in (`docker-compose.yml`)
 
