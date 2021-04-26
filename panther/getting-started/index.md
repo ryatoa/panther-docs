@@ -118,13 +118,14 @@ More details on this are available in [the API section](../api/index.md).
 The freely available software packages listed below can act as event
 sources for Panther.
 
-| Software                                                          | Official Website                                                                 | Panther Configuration                                              |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| ![NXLog](./media/nxlog-logo.png){:height="30px" width="80px"}     | [Documentation](https://nxlog.co/documentation){:target="_blank"}                | [Linux](../config#nxlog-linux), [Windows](../config#nxlog-windows) |
-| ![Rsyslog](./media/rsyslog-logo.png){:height="30px" width="80px"} | [Documentation](https://www.rsyslog.com/doc/master/index.html){:target="_blank"} | [Linux](../config#rsyslog-linux)                                   |
-| Syslog-ng                                                         | TODO                                                                             | TODO                                                               |
-| Log4j                                                             | TODO                                                                             | TODO                                                               |
-| Log4Net                                                           | TODO                                                                             | TODO                                                               |
+| Software                                                          | Official Website                                                                 | Panther Configuration                                                                                                            |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| ![NXLog](./media/nxlog-logo.png){:height="30px" width="80px"}     | [Documentation](https://nxlog.co/documentation){:target="_blank"}                | [Linux](../sending-events/nxlog.md#nxlog-configuration-linux), [Windows](../sending-events/nxlog.md#nxlog-configuration-windows) |
+| ![Rsyslog](./media/rsyslog-logo.png){:height="30px" width="80px"} | [Documentation](https://www.rsyslog.com/doc/master/index.html){:target="_blank"} | [Linux](../sending-events/rsyslog.md#rsyslog-configuration)                                                                      |
+| Syslog-ng                                                         | TODO                                                                             | TODO                                                                                                                             |
+| Log4j                                                             | TODO                                                                             | TODO                                                                                                                             |
+| Log4Net                                                           | TODO                                                                             | TODO                                                                                                                             |
+| ![AWS](../../img/aws-white.png){:height="30px"}                   | TODO                                                                             | [Linux](../sending-events/aws.md)                                                                                                |
 
 Examples of approaches that can be used to monitor infrastructure and applications.
 
