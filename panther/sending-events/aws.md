@@ -11,7 +11,7 @@ image: /img/panther_logo_thin_with_aws.png
 
 # AWS-Events2Panther
 
-This guide will quickly and easily allow a user to deploy a lambda function to collect AWS events and send them to Panther via it's [HTTP API](../api/index.md).
+This guide will quickly and easily allow a user to deploy a lambda function to collect AWS events and send them to Panther using the [HTTP API](../api/index.md), this is a general purpose API and can also be used from the commandline.
 
 AWS events are either region specific or global, depending on the service. So to get all events to your panther console you will have to deploy this lambda function to each of your accounts and regions that you wish to monitor.
 
@@ -20,9 +20,13 @@ The NodeJS JavaScript code can be modified by you if you wish to support differe
 Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.  
 
 
+
+> **TODO** _Note: sending events to self hosted containers will require modifying the Lambda function._
+
+
 ## System Design
 
-This system has ben designed to gather AWS events, extract data from them and send it to your Panther console.
+This system has been designed to gather AWS events, extract data from them and send it to your Panther console.
 
 The general flow of events from AWS to Panther can be sumarised by the following:
 
@@ -62,10 +66,7 @@ internet -down-> Panther
 
 1. The Lambda function is triggered whenever a filter matches an event.
 2. It will then format the event data into a [Panther JSON](#panther-json-message) message.
-3. Then it will send the message to your Panther console using your private [API key](../api/index.md#api-key).
-
-
-
+3. Then it will send the message to your Panther console (via https) using your private [API key](../api/index.md#api-key).
 
 
 # Step-by-step

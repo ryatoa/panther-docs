@@ -110,7 +110,9 @@ Once the Windows configuration archive has been downloaded
 [as described above,](#download-configuration-archive) the contents of
 `nxlog-config-windows.zip` must be overlaid onto the base directory of
 the installed NXLog package.  If the default install options were
-used, this will normally be `C:\Program Files (x86)\nxlog`.
+used, this will normally be:
+
+  `C:\Program Files (x86)\nxlog`.
 
 Opening this directory with the Windows File Explorer will show that it
 contains `cert` and `conf` sub-directories, among others. While the
