@@ -42,7 +42,7 @@ Events can be received by Panther via two protocols:
 | Secure Syslog | example.app.panther.support | 6514 |
 | HTTPS | https://app.panther.support | 443 |
 
-These are both _TCP_ ports and may require additional firewalling rules to permit connectivity depending on your infrastructure.
+These are both _TCP_ ports and may require additional firewalling rules to permit connectivity depending on your infrastructure setup.
 
 
 ## [app.panther.support](https://app.panther.support) (secure syslog)
@@ -53,15 +53,26 @@ Event data is sent securely to the Panther server from local clients via an encr
 
 Since these certificates and keys are needed to configure client event loggers, they are bundled into "configuration archives" along with sample configuration files specific to the software, and made available for download from your Panther instance e.g. ([example.app.panther.support](https://app.panther.support){:target="_blank"}).
 
-> _Note: You should ensure that the `client.key` included in your configuration archive is kept securely to prevent its use by anyone else._
+> _Note: You should ensure that the `key.pem` included in your configuration archive is kept secure to prevent its use by anyone else._
 
 The configuration process therefore is to download an appropriate archive, to load it in a suitable location for the software, and to carry out any remaining package or system specific tasks.
 
-Please follow the instructions for configuring a specific syslog sender:
+There are specific instructions for configuring the following Event senders:
 
  - [Rsyslog](./rsyslog.md) 
  - [NXLog](./nxlog.md)
 
+## Other Syslog agents 
+
+Please start by looking at the [Rsyslog](./rsyslog.md) configuration archive which includes the necessary certificate files to establish a secure syslog connection.
+
+The following files are included in the `rsyslog-config-<system>.tar` and can be used as the basis for other Syslog agents:
+
+|cert.pem| TLS Client certificate (self signed)|
+|key.pem| TLS Client Key|
+|panther-cert-chain.pem| The (self signed) Certificate chain of trust |
+
+Syslog events are sent to `app.panther.support:6514` (TCP)
 
 
 ## [app.panther.support](https://app.panther.support) (HTTPS API)
