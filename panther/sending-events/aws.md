@@ -15,13 +15,11 @@ This guide will quickly and easily allow a user to deploy a lambda function to c
 
 AWS events are either region specific or global, depending on the service. So to get all events to your panther console you will have to deploy this lambda function to each of your accounts and regions that you wish to monitor.
 
-The NodeJS JavaScript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
+The Node.js JavaScript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
 
 Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.  
 
-
-
-> **TODO** _Note: sending events to self hosted containers will require modifying the Lambda function._
+> _Note: If you are self hosting Panther through a local `docker` installation, you will need to ensure there is network connectivity from AWS to Panther. It is assumed there will be a TLS reverse proxy sat infront of Panther, if this not the case the Lambda function will need to be modified_
 
 
 ## System Design
@@ -59,7 +57,7 @@ Rectangle Panther #black [
 ]
 
 LambdaPantherEvent -down-> internet : POST to Panther API (app.panther.support)
-internet -down-> Panther 
+internet -down-> Panther
 
 @enduml
 
@@ -109,10 +107,32 @@ git clone https://github.com/OpenAnswers/panther-aws-events.git
 cd panther-aws-events
 ```
 
-Build and deploy the code to AWS with: 
+### Building the AWS Lambda function (using Node.js)
+
+Many linux distributions include an old version of `node`, the following build step is expecting Node.js v12.x to be in your `$PATH`.
+
+```console
+# Build a Node.js 12 application using a locally installed version of Node.js
+sam build
+```
+
+> _Note: NodeJS v.12 can be installed for Linux using [NVM](https://github.com/nvm-sh/nvm){:target="blank"}._
+
+
+### Building the AWS Lambda function (using Docker)
+
+If you have `docker` installed you can use this build step, it has the benefit of being somewhat more platform agnostic.
+
+```console
+# Build a Node.js 12 application using a container image pulled from DockerHub
+sam build --use-container --build-image amazon/aws-sam-cli-build-image-nodejs12.x
+```
+
+### Deploying the AWS Lambda function
+
+Using the guided option will interactively prompt for the values from the [checklist](#checklist).
 
 ```
-sam build
 sam deploy --guided
 ```
 
