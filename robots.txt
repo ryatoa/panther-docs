@@ -1,1 +1,1 @@
-Sitemap: https://openanswers.github.io/panther-docs/sitemap.xml
+Sitemap: https://vinceoa.github.io/panther-docs/sitemap.xml
