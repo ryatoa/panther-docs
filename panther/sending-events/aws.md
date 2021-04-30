@@ -11,22 +11,22 @@ image: /img/panther_logo_thin_with_aws.png
 
 # AWS-Events2Panther
 
-This guide will quickly and easily allow a user to deploy a lambda function to collect AWS events and send them to Panther using the [HTTP API](../api/index.md), this is a general purpose API and can also be used from the commandline.
+This guide will quickly and easily allow a user to deploy an [AWS Lambda](https://aws.amazon.com/lambda/) function called AWS-Events2Panther to collect AWS events and send them to Panther using the [Panther REST API](../api/index.md), which is a general purpose API that can also be used from the command-line.
 
-AWS events are either region specific or global, depending on the service. So to get all events to your panther console you will have to deploy this lambda function to each of your accounts and regions that you wish to monitor.
+AWS events are either region specific or global, depending on the service. Therefore, to get all events to your Panther Console you will have to deploy the AWS-Events2Panther Lambda function to each of your accounts and regions that you wish to monitor.
 
-The Node.js JavaScript code can be modified by you if you wish to support different AWS events, and/or send different data as part of the message.  ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome )
+The AWS-Events2Panther Lambda function [Node.js JavaScript code](https://github.com/OpenAnswers/panther-aws-events/blob/master/e2p/e2p.js) can be easily modified to support different AWS events, and/or send different data as part of the message, if required ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome ).
 
-Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} instance or your own self hosted [Dockerised containers](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"}.  
+Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} SaaS instance or your own self-hosted [Dockerised container](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"} deployment.
 
-> _Note: If you are self hosting Panther through a local `docker` installation, you will need to ensure there is network connectivity from AWS to Panther. It is assumed there will be a TLS reverse proxy sat infront of Panther, if this not the case the Lambda function will need to be modified_
+> _**NOTE:** If you are self-hosting Panther through a local `docker` installation, you will need to ensure there is network connectivity from AWS to Panther. It is assumed there will be a TLS reverse proxy sat in front of Panther, if this not the case the Lambda function will need to be modified_
 
 
 ## System Design
 
-This system has been designed to gather AWS events, extract data from them and send it to your Panther console.
+This system has been designed to gather AWS events, extract data from them and send it to your Panther Console via the Panther API.
 
-The general flow of events from AWS to Panther can be sumarised by the following:
+The general flow of events from AWS to Panther is summarised by the following:
 
 @startuml
 skinparam backgroundColor #eeeeee
@@ -40,46 +40,46 @@ skinparam backgroundColor #eeeeee
 
 Cloudalt(Cloudalt, "", "AWS") #orange {
 
-  Rectangle "sources" #white {
+  Rectangle "Sources" #white {
     GuardDuty(GuardDuty1, "","All events from GuardDuty")
     CloudWatch(CloudWatch1, "","All visible events in region")
   }
-  LambdaLambdaFunction(LambdaPantherEvent, "panther-aws-events", "")
+  LambdaLambdaFunction(LambdaPantherEvent, "AWS-Events2Panther", "Send events to Panther API")
 
-  sources -down-> LambdaPantherEvent 
+  Sources -down-> LambdaPantherEvent 
   
 }
 
-cloud internet
+cloud Internet
 
 Rectangle Panther #black [
   PantherLogo as A1
 ]
 
-LambdaPantherEvent -down-> internet : POST to Panther API (app.panther.support)
-internet -down-> Panther
+LambdaPantherEvent -down-> Internet : POST to Panther API (app.panther.support)
+Internet -down-> Panther
 
 @enduml
 
 
 1. The Lambda function is triggered whenever a filter matches an event.
-2. It will then format the event data into a [Panther JSON](#panther-json-message) message.
-3. Then it will send the message to your Panther console (via https) using your private [API key](../api/index.md#api-key).
+2. The Lambda function formats the event data into a [Panther JSON](#panther-json-message) message.
+3. The Lambda function sends the message to your Panther Console via the Panther API (over HTTPS) using your private [API key](../api/index.md#api-key).
 
 
 # Step-by-step
 
-This project is built and uploaded to AWS using the Serverless Application Model (SAM):
+The [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events) project is built and deployed to AWS using the Serverless Application Model (SAM):
 
 [docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html){:target="_blank"}
 
-So to easily build and upload the code to AWS, you must first install SAM.
+Therefore, to easily build and deploy the Lambda function code to AWS, you must first install SAM.
 
->_Note: The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
+>_**NOTE:** The AWS SAM tool requires that you have setup the AWS CLI tools first, and that you can use them to access your account:  [docs.aws.amazon.com/cli/index.html](https://docs.aws.amazon.com/cli/index.html){:target="_blank"}_
 
 ## Installing SAM on Linux (simple)
 
-To install SAM, you can use the [Python 3 installer](https://docs.python.org/3/installing/index.html){:target="_blank"} version:
+To install SAM on Linux, you can use the [Python 3 installer](https://docs.python.org/3/installing/index.html){:target="_blank"} version:
 
 ```
 pip3 install aws-sam-cli
@@ -93,50 +93,52 @@ The official [Amazon SAM](https://docs.aws.amazon.com/serverless-application-mod
 In order to send events from your AWS estate to [Panther](https://app.panther.support){:target="_blank"} you will need to have the following values:
 
 |`APIToken`| Panther [HTTP API Key](/../admin/index.md#api-keys) this will be a long 32 character string of random letters and numbers |
-|`ConsoleFQDN`| The fully qualified name of your Panther console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self hosted hostname |
+|`ConsoleFQDN`| The fully qualified name of your Panther Console e.g. [example.app.panther.support](https://app.panther.support){:target="_blank"} or self-hosted hostname |
 
-You will be prompted for these values when deploying to AWS SAM.
+You will be prompted for these values when deploying to AWS via SAM.
 
 
 ## Installing AWS-Events2Panther
 
-Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} code from GitHub with:
+Download the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} source code from GitHub with:
 
 ```
 git clone https://github.com/OpenAnswers/panther-aws-events.git
 cd panther-aws-events
 ```
 
+Once the source code has been downloaded, the [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} project needs to be built using the `sam build` command. The panther-aws-events build is dependent on Node.js v12. To build the panther-aws-events project, you need to either install Node.js v12 locally or use the `sam build --use-container` option, which uses an Amazon provided AWS SAM Node.js v12 build container, as detailed below. 
+
 ### Building the AWS Lambda function (using Node.js)
 
-Many linux distributions include an old version of `node`, the following build step is expecting Node.js v12.x to be in your `$PATH`.
+If you have `node` v12 installed, you can use this build step:
 
 ```console
 # Build a Node.js 12 application using a locally installed version of Node.js
 sam build
 ```
 
-> _Note: NodeJS v.12 can be installed for Linux using [NVM](https://github.com/nvm-sh/nvm){:target="blank"}._
+> _**NOTE:** Many linux distributions include an old version of `node`. Node.js v12 can be installed for Linux using [NVM](https://github.com/nvm-sh/nvm){:target="blank"}._
 
 
 ### Building the AWS Lambda function (using Docker)
 
-If you have `docker` installed you can use this build step, it has the benefit of being somewhat more platform agnostic.
+If you have `docker` installed, you can use this build step, which has the advantage of being platform agnostic:
 
 ```console
-# Build a Node.js 12 application using a container image pulled from DockerHub
+# Build a Node.js 12 application using an Amazon container image pulled from DockerHub
 sam build --use-container --build-image amazon/aws-sam-cli-build-image-nodejs12.x
 ```
 
 ### Deploying the AWS Lambda function
 
-Using the guided option will interactively prompt for the values from the [checklist](#checklist).
+Using the guided option will interactively prompt for the values from the [checklist](#checklist) above.
 
 ```
 sam deploy --guided
 ```
 
->_Note: SAM uses the same configuration as the aws cli, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
+>_**NOTE:** SAM uses the same configuration as the AWS CLI, so if you use many different accounts, ensure that your profile is pointing to the correct account that you wish to install the collector in._
 
 You will then be asked a series of questions to deploy the code to your account and will be prompted for the following values:
   - `APIToken`
@@ -249,9 +251,9 @@ Successfully created/updated stack - AWS-Events2Panther in eu-west-3
 
 ## Running 
 
-Once the code has been successfully registered in AWS you should start seeing a stream of events into your Panther console.
+Once the code has been successfully registered in AWS, you should start seeing a stream of events into your Panther Console.
 
-Manual testing can be done following the [**Sending some test events**](#sending-some-test-events) instructions.
+Manual testing can be done by following the [**Sending some test events**](#sending-some-test-events) instructions.
 
 
 # Configuring the captured events
@@ -289,9 +291,9 @@ If you wish to capture some events, you can uncomment the following line from th
     console.log("Event Received: " + JSON.stringify(event, null, 2));
 ```
 
-This will write the event JSON to the CloudWatch Logs log group related to the lambda function.
+This will write the event JSON to the CloudWatch Logs log group related to the Lambda function.
 
-Some other examples of pattern filters are, any ec2 instances that are terminated:
+Some other examples of pattern filters are, any EC2 instances that are terminated:
 
 ```yaml
     EC2Events:
@@ -305,7 +307,7 @@ Some other examples of pattern filters are, any ec2 instances that are terminate
             - terminated
 ```
 
-Or if you wish to match CloudFormation lambda code deployment in eu-west-1 or eu-west-2, you could write a filter like this:
+Or if you wish to match CloudFormation Lambda code deployment in eu-west-1 or eu-west-2, you could write a filter like this:
 
 ```yaml
     LambdaUpdates:
@@ -329,9 +331,9 @@ AWS documentation to help you create more filters can be found here (although it
 
 ## Setting up event triggers in the AWS console
 
-The SAM CloudFormation template includes a rule to accept all events, and send them to the lambda function.
+The SAM CloudFormation template includes a rule to accept all events, and send them to the Lambda function.
 
-However you can also disable that one and create your own more specific rules.
+However, you can also disable that one and create your own more specific rules.
 
 Rules can be accessed from two locations:
 
@@ -416,7 +418,7 @@ You can setup multiple filter rules, each looking for a different type of event 
 
 The messages sent to Panther are generated in the JavaScript Lambda function using the information extracted from the JSON AWS event data.
 
-So to edit the message generated for an event that is already handled, all you have to do is find the correct function and edit it to put the data you whish in the correct fields.
+Therefore, to edit the message generated for an event that is already handled, all you have to do is find the correct function and edit it to put the data you wish in the correct fields.
 
 ## Currently supported event types
 
@@ -430,11 +432,11 @@ To handle a new event type you should replicate the approach used for other even
 
 1. Create a new function that accepts a JSON object representing the AWS event data.
 2. The source event may contain an array of child events, create one or more Panther message from the source data. The Panther message format can be seen below.
-3. Add a new case statement into `exports.lambdaHandler()` function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more Panther messages.
+3. Add a new case statement into the `exports.lambdaHandler()` function that calls your new function and puts the returned data into the _data_ variable. The data must be an array of one or more Panther messages.
 
 ## Panther JSON message
 
-Has the following structure:
+The Panther JSON message has the following structure:
 
 ```json
 "event": {
@@ -457,9 +459,9 @@ The `severity` is on a scale from 0-5, with
 
 SAM can use a local docker image to test Lambda functions on your machine.
 
-To run the lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken` as described in the [checklist](#checklist).
+To run the Lambda function with the test data first update the `env.json` file with your values for `ConsoleFQDN` and `APIToken` as described in the [checklist](#checklist).
 
->_Note: to create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)_
+>_**NOTE:** To create a Panther `APIToken` please consult the [admin documentation](../admin/index.md#api-keys)_
 
 
 ```
@@ -472,14 +474,14 @@ To run the lambda function with the test data first update the `env.json` file w
 }
 ```
 
-Then invoke the lambda function with:
+Then invoke the Lambda function with:
 
 ```
 sam build
 sam local invoke Events2PantherFunction -e events/<filename>.json --env-vars env.json
 ```
 
-__Note__ replace `<filename>.json` with an actual file, some examples are provided in the [GitHub repository](https://github.com/OpenAnswers/panther-aws-events/tree/master/events){:target="_blank"}:
+__NOTE:__ Replace `<filename>.json` with an actual file, some examples are provided in the [GitHub repository](https://github.com/OpenAnswers/panther-aws-events/tree/master/events){:target="_blank"}:
 
   - [`events/guardduty1.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty1.json){:target="_blank"}
   - [`events/guardduty2.json`](https://github.com/OpenAnswers/panther-aws-events/blob/master/events/guardduty2.json){:target="_blank"}
@@ -500,11 +502,11 @@ The log group will contain multiple logs written each time the function is trigg
 
 # Sending some test events
 
-After installation has completed a new lambda function will have been registered with the supplied __Stack Name__ by default this will be **AWS-Events2Panther**. 
+After installation has completed a new Lambda function will have been registered with the supplied __Stack Name__ by default this will be called **AWS-Events2Panther**.
 
 ## Simulating an EC2 instance state change
 
-Find your lambda functions, if you imported with default values it will be named **AWS-Events2Panther** and should be listed on [aws.amazon.com/lambda/home](https://console.aws.amazon.com/lambda/home){:target="_blank"}
+Find your Lambda function, if you imported with default values it will be named **AWS-Events2Panther** and should be listed on [aws.amazon.com/lambda/home](https://console.aws.amazon.com/lambda/home){:target="_blank"}
 
 You should see something like ![Default lambda function](./media/aws-lambda-panther.png)
 
@@ -538,7 +540,7 @@ It should look something like this:
 
 * Click the ![Invoke button](./media/invoke.png) button to send the event.
 
-* Verify in your Panther console that the event was received (it may take a couple of seconds)
+* Verify in your Panther Console that the event was received (it may take a couple of seconds)
 
 ![EC2 event arrived in Panther](./media/example-ec2-in-panther.png)
 
