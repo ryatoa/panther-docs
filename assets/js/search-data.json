@@ -1,0 +1,818 @@
+{"0": {
+    "doc": "Agent rules",
+    "title": "Overview",
+    "content": "There are two Panther event receivers: . | Syslog | HTTP | . Events flow throught the each agent before being processed by the global and group rules. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#overview",
+    "relUrl": "/panther/rules/agent#overview"
+  },"1": {
+    "doc": "Agent rules",
+    "title": "Agent Rules",
+    "content": "These are common to all agents . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#agent-rules",
+    "relUrl": "/panther/rules/agent#agent-rules"
+  },"2": {
+    "doc": "Agent rules",
+    "title": "Default Event Identifier",
+    "content": ". The event’s identifier field uniquely identifies an event in the console. By default this is created by combining the node, severity, tag and summary fields: . {node}:{severity}:{tag}:{summary} . Any events with a matching identifier will be grouped together, and the corresponding event tally will increase by 1. If no matching event identifier is found, then a new event is created. Timestamps are also stored for each event. Please note that when events are deduplicated via the identifier field, some information may be lost. For example, the PID of a process can change regularly, but is not included in the identifier by default, so multiple PIDs may aggregate into a single event. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#default-event-identifier",
+    "relUrl": "/panther/rules/agent#default-event-identifier"
+  },"3": {
+    "doc": "Agent rules",
+    "title": "Field Mapping",
+    "content": ". ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#field-mapping",
+    "relUrl": "/panther/rules/agent#field-mapping"
+  },"4": {
+    "doc": "Agent rules",
+    "title": "Field Transformers",
+    "content": ". The transforms allow pre-defined functions to be applied to event console fields before rules processing takes place. Currently supported transformations are . | Lower Case | lowercases a field value | . | Upper Case | uppercases a field value | . | Left Trim | Trims whitespace on the left | . | Right Trim | Trims whitespace on the right | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#field-transformers",
+    "relUrl": "/panther/rules/agent#field-transformers"
+  },"5": {
+    "doc": "Agent rules",
+    "title": "Agent Specific - Syslog",
+    "content": "Syslog message fields need to be mapped to event console fields. These fields will then be available for matching in rules processing. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#agent-specific---syslog",
+    "relUrl": "/panther/rules/agent#agent-specific---syslog"
+  },"6": {
+    "doc": "Agent rules",
+    "title": "Severity Mapping",
+    "content": ". Syslog logging levels need to be mapped to event console severities as there is not a one to one relationship between them, and the scale is also inverted. Syslog levels are defined from 7 (debug) to 0 (emergency). Panther severities are from 5 (critical) to 0 (clear). By default, events with severity 0 will be periodically removed from the list of event logs in the console. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#severity-mapping",
+    "relUrl": "/panther/rules/agent#severity-mapping"
+  },"7": {
+    "doc": "Agent rules",
+    "title": "Agent Specific - HTTP",
+    "content": "TODO . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent#agent-specific---http",
+    "relUrl": "/panther/rules/agent#agent-specific---http"
+  },"8": {
+    "doc": "Agent rules",
+    "title": "Agent rules",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/agent",
+    "relUrl": "/panther/rules/agent"
+  },"9": {
+    "doc": "Server Global rules",
+    "title": "Global Rules",
+    "content": "Global rules are applied to every event that is parsed into Panther. These would be common rules intended to apply to most if not every group. An example would be a global rule to discard any events that are sent in due to the registry file being in use by another application or service. To implement this example: . | Create a new rule . | Enter a name for the rule and choose a selector from the drop down menu. In this case, use match to check for a string in the summary of the event. | Select a field, in this case the summary field of the log event. | Enter the string to match the field with in the summary. In this case, the message is /detected your registry/. | The action to select is to delete the event log from the console. | Save the new rule and click deploy to forward the changes to the server. | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/global#global-rules",
+    "relUrl": "/panther/rules/global#global-rules"
+  },"10": {
+    "doc": "Server Global rules",
+    "title": "Server Global rules",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/global",
+    "relUrl": "/panther/rules/global"
+  },"11": {
+    "doc": "Server Group rules",
+    "title": "Group Rules",
+    "content": "Group rules are used to sort the event logs into different groups, based on user discretion. An example of this would be splitting the events based on the service type, such as web service or OS. A “web service” group could handle events related to Apache, such as downtime for example, and an “OS” group could handle events such as system crashes. Sorting the event logs into groups such as these can help maximize efficiency by sending them to the relevant teams. To create a new group rule: . | Create a new group . | Enter the name of the group you want to make. In this case there are two groups – one named Operating System and one named Apache Web Service. | To match any event log with this group, set a rule in the group selector. In this case, the rule is going to check the tag of the event log for the string os. Once this match has been found, it will run through the rules in the group one by one against the event log entry, carrying out any processing required. To do this, click on the pencil to open up the group selector. | Create a rule to match the tag field with the word os, and save it. | The new group selector can now match event logs containing the os tag against any rules in the group. To create a new rule for the group, click on the down arrow for it and select ‘Create a rule for…’ . | This section is very similar to the Global Rule section. In this example, create a rule to log and group any failed su authentication events. This rule is sending any event log that contains the string FAILED su for .* to the Operating System group and setting the severity to 3. | Click Save and enable the deployment to the server. | . An example of this group rule being used is shown in the API section. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/group#group-rules",
+    "relUrl": "/panther/rules/group#group-rules"
+  },"12": {
+    "doc": "Server Group rules",
+    "title": "Server Group rules",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/group",
+    "relUrl": "/panther/rules/group"
+  },"13": {
+    "doc": "Sending Events to Panther",
+    "title": "Overview",
+    "content": "The most straightforward way to send events to Panther is to install and configure compatible logging software on the client system. While users should generally install the software according to the documentation published by the relevant providers, specific configuration is also required to enable communication with Panther. This page provides a guide to the configuration required once the logging software has been installed. (Please note that the instructions here are based on clean installations of the logging software – if site-specific configurations have already been made, then it is necessary to download the Panther resources and integrate them following the providers’ documentation.) . All users should read the general advice in the introduction, but then refer to the relevant sections for their own specific software. | Introduction (all systems) | Download configuration archive (all systems) | Rsyslog (linux) | NXLog (linux) | NXLog (windows) | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#overview",
+    "relUrl": "/panther/config#overview"
+  },"14": {
+    "doc": "Sending Events to Panther",
+    "title": "Introduction",
+    "content": "Event data is sent securely to the Panther server from local clients via an encrypted connection using Transport Layer Security (TLS). This requires the use of certificates and unique client keys which are generated specifically for your Panther instance during the sign-up process. Since these certificates and keys are needed to configure client event loggers, they are bundled into “configuration archives” along with sample configuration files specific to the software, and made available for download by Panther. You should ensure that the client.key included in your configuration archive is kept securely to prevent its use by anyone else. The configuration process therefore is to download an appropriate archive, to load it in a suitable location for the software, and to carry out any remaining package or system specific tasks. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#introduction",
+    "relUrl": "/panther/config#introduction"
+  },"15": {
+    "doc": "Sending Events to Panther",
+    "title": "Downloading Configuration Archive",
+    "content": "The configuration archives are available on the Admin page. Select this using the tab from the main menu at the top of the Panther page. The drop-down selector offers archives for the supported software and operating systems. Select the appropriate option for your client and click the Download button. The archives are downloaded in an appropriate format for each system: Linux archives are provided in uncompressed tar format, while Windows archives are built using zip. (Note that the same certificates and keys are provided in each archive, so for custom configurations the choice of download is unimportant.) . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#downloading-configuration-archive",
+    "relUrl": "/panther/config#downloading-configuration-archive"
+  },"16": {
+    "doc": "Sending Events to Panther",
+    "title": "Rsyslog Configuration",
+    "content": "For complete information on configuring rsyslog, please consult the official guides for rsyslog. Major distributions include rsyslog in their standard repositories, so please either follow your system’s guidelines to install and enable it, or visit the official website. Once rsyslog is installed, the necessary steps to integrate it with Panther are: . | install supporting gnutls packages | install configuration files | restart rsyslog | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#rsyslog-configuration",
+    "relUrl": "/panther/config#rsyslog-configuration"
+  },"17": {
+    "doc": "Sending Events to Panther",
+    "title": "Install GNU-TLS support for rsyslog",
+    "content": "On GNU/Linux systems, rsyslog uses the GnuTLS library to provide its TLS functionality. This is classed as an optional dependency on some distributions, and is therefore not always installed automatically by the package manager. Where this is the case, the TLS package may have to be added explicitly along with the main rsyslog package. Debian / Ubuntu . # apt-get install rsyslog-gnutls . RedHat / CentOS . # yum install rsyslog-gnutls . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#install-gnu-tls-support-for-rsyslog",
+    "relUrl": "/panther/config#install-gnu-tls-support-for-rsyslog"
+  },"18": {
+    "doc": "Sending Events to Panther",
+    "title": "Install the configuration files",
+    "content": "The downloaded resources in rsyslog-config-linux.tar need to be installed into the system rsyslog configuration directory. The following commands will extract the archive into /etc/rsyslog-client.d, creating it if necessary. If the directory already exists, then make a backup of it before extracting the archive in case any previously configured files are overwritten. [root@localhost ~]# cd /etc [root@localhost /etc]# tar -xvf /path/to/rsyslog-config-linux.tar . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#install-the-configuration-files",
+    "relUrl": "/panther/config#install-the-configuration-files"
+  },"19": {
+    "doc": "Sending Events to Panther",
+    "title": "Edit the main rsyslog configuration",
+    "content": "Once the new configuration files have been installed, the main system rsyslog configuration file must be updated in order to reference them. Edit /etc/rsyslog.conf and make sure that it contains a line like this to read the Panther configuration files extracted from the archive above: . $IncludeConfig /etc/rsyslog-client.d/*.conf . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#edit-the-main-rsyslog-configuration",
+    "relUrl": "/panther/config#edit-the-main-rsyslog-configuration"
+  },"20": {
+    "doc": "Sending Events to Panther",
+    "title": "Restart rsyslog",
+    "content": "The new configuration should take effect automatically when the system is next rebooted, but it is also possible to restart rsyslog to have the changes take effect immediately. systemd based systems . Systems using the newer systemd service manager, such as Ubuntu 18 and CentOS 7, can restart the rsyslog service as follows: . # systemctl restart rsyslog . init.d based systems . Systems using the older System V init service management scripts can generally restart the rsyslog service as follows: . # /etc/init.d/rsyslog restart . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#restart-rsyslog",
+    "relUrl": "/panther/config#restart-rsyslog"
+  },"21": {
+    "doc": "Sending Events to Panther",
+    "title": "NXLog Configuration (Linux)",
+    "content": "Install the NXLog Community Edition from the official website following the deployment guide. Once installed, the steps to integrate NXLog with Panther are: . | install configuration files | restart nxlog | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#nxlog-configuration-linux",
+    "relUrl": "/panther/config#nxlog-configuration-linux"
+  },"22": {
+    "doc": "Sending Events to Panther",
+    "title": "Install the configuration files",
+    "content": "To begin with, download the configuration archive as described above. The downloaded resources in nxlog-config-linux.tar then need to be installed into the system NXLog configuration directory. The following commands will extract the archive into /etc/nxlog, which should have been created during the NXLog installation. Note that any existing nxlog.conf will be overwritten, so make a backup if one already exists. [root@localhost ~]# cd /etc/nxlog [root@localhost /etc/nxlog]# tar -xvf /path/to/nxlog-config-linux.tar . Apart from overwriting the main nxlog.conf, this will extract the required certificates and key files into a new panther sub-directory. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#install-the-configuration-files-1",
+    "relUrl": "/panther/config#install-the-configuration-files-1"
+  },"23": {
+    "doc": "Sending Events to Panther",
+    "title": "Restart NXLog",
+    "content": "If NXLog has been installed according to the deployment guide, then it should restart automatically following a system reboot. In order to have the new configuration take immediate effect, it is also possible to restart NXLog immediately. While systemd systems such as Ubuntu and CentOS are supported, at the time of writing the service management interface for NXLog is implemented as a wrapper around the System V init scripts. This means that, on both systemd and init based systems, it is possible to restart NXLog by calling the init script directly: . [root@localhost /etc/nxlog]# /etc/init.d/nxlog restart . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#restart-nxlog",
+    "relUrl": "/panther/config#restart-nxlog"
+  },"24": {
+    "doc": "Sending Events to Panther",
+    "title": "NXLog Configuration (Windows)",
+    "content": "Download the Windows installer for the NXLog Community Edition from the official website. Install the package by running the installer, but also see the deployment guide. Once installed, the steps to integrate NXLog with Panther are: . | install configuration files | restart nxlog | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#nxlog-configuration-windows",
+    "relUrl": "/panther/config#nxlog-configuration-windows"
+  },"25": {
+    "doc": "Sending Events to Panther",
+    "title": "Install the configuration files",
+    "content": "Once the Windows configuration archive has been downloaded as described above, the contents of nxlog-config-windows.zip must be overlaid onto the base directory of the installed NXLog package. If the default install options were used, this will normally be C:\\Program Files (x86)\\nxlog. Opening this directory with the Windows File Explorer will show that it contains cert and conf sub-directories, among others. While the cert directory should be empty, the conf directory may contain a sample nxlog.conf, which should be renamed nxlog.dist in order to prevent any clash with the new configuration. Extract the downloaded nxlog-config-windows.zip Panther configuration archive by clicking on it and selecting the extract to option, specifying the base directory NXLog was installed into – normally C:\\Program Files\\nxlog – containing the cert and conf sub-directories. This will copy the certificates and key files into the empty cert directory, along with a new nxlog.conf into the conf directory. Note that the system may ask for confirmation when writing to the cert directory, owing to its permissions. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#install-the-configuration-files-2",
+    "relUrl": "/panther/config#install-the-configuration-files-2"
+  },"26": {
+    "doc": "Sending Events to Panther",
+    "title": "Restart NXLog",
+    "content": "The NXLog installer should have configured the service to be started automatically on the next system boot. From the NXLog documentation, it is also possible to start the service directly from the services console, or from the command line interface by navigating to the install directory and running nxlog.exe -f. This last option may assist in initial debugging. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config#restart-nxlog-1",
+    "relUrl": "/panther/config#restart-nxlog-1"
+  },"27": {
+    "doc": "Sending Events to Panther",
+    "title": "Sending Events to Panther",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/config",
+    "relUrl": "/panther/config"
+  },"28": {
+    "doc": "Console",
+    "title": "Overview",
+    "content": ". The console is the main feature of Panther. It contains the system event logs, which are filtered and categorized based on account settings. There are numerous options for interacting with the events, such as deleting them, expanding them to display more information, or assigning them to specific users. These options are explained in more detail below. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console#overview",
+    "relUrl": "/panther/console#overview"
+  },"29": {
+    "doc": "Console",
+    "title": "Events",
+    "content": "To interact with one or more events, first select them using one of the following methods: . | Click on a single event to highlight it. | Click hold and drag (like drawing a box) to highlight many events. | Control click to add another single event to your selection. | Shift click to add a sequence of events to your selection. | Press keyboard shortcut ctrl+a to select all events. | . Right click to display the context menu of actions available for the selected events as outlined below. Acknowledge and Unacknowledge . New events will be in an unacknowledged state by default, displayed in bold text, unless a rule has been set that says otherwise. When an event is acknowledged from the right click menu, it will automatically be assigned to the user. Users can also acknowledge and unacknowledge events from the event details dialogue box. Add External ID . TODO . Add Note . TODO . Clear . Clearing sets an event to be removed from the console. Cleared events will be highlighted green for a time, so other users can be notified, until a background task deletes them. Assign . Events can be assigned to console users, who can then see them in the view page under the Mine user view. Severity . The severity levels of events can be changed to different values by selecting new ones from the provided menu options. Details . TODO . Copy Event . The summary details of the selected events can be copied into your local system’s copy buffer for pasting into other applications. Tools . TODO . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console#events",
+    "relUrl": "/panther/console#events"
+  },"30": {
+    "doc": "Console",
+    "title": "Event Details",
+    "content": "A dialogue box containing more detail of each event can be displayed by double clicking the event or pressing the enter key while an event is selected. In addition to the details available in the dialogue box, all actions in the console’s right click context menu are also available as buttons along the bottom. Along the top is a row of tabs providing access to further information, as outlined below. Details . The details tab provides an overview of the event, including a graph of up to 1000 of the event’s previous occurrences. Notes . Text notes can be added to events for further reference, which can also be seen by other users. History . Any activity that has occurred on the event can be seen in the history tab. This will include any rules that have been used during the event processing, and any actions taken by users from the console. Fields . All data associated with events may be inspected on the fields tab. Matches . The matches tab reports whether the events match any global or group rules. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console#event-details",
+    "relUrl": "/panther/console#event-details"
+  },"31": {
+    "doc": "Console",
+    "title": "Activity",
+    "content": "Recent user activity can be displayed by expanding the activity sidebar from the top-right corner of the console screen. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console#activity",
+    "relUrl": "/panther/console#activity"
+  },"32": {
+    "doc": "Console",
+    "title": "Filters",
+    "content": "The top-left corner of the console contains a row of filters which may be applied to display events matching a number of criteria. Group . Selecting a group from the drop-down menu will filter all events to just the group set up in the user’s rules. There are two special groups – All will display every event and No Group will display any events that have not been categorized. View . Views allow event fields to be queried for particular data and only matching events to be shown in the console. By default, the All, Mine, Acknowledged and Unacknowledged views are already available. Severity . Selecting a specific severity will filter the console data to only contain events matching the required value, while All will include everything. Multiple Filters . It is possible to select all the filters at the same time in order to monitor specific kinds of events. For example, it is possible to view all critical alerts that are assigned to a particular user and match the rules for a configured group. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console#filters",
+    "relUrl": "/panther/console#filters"
+  },"33": {
+    "doc": "Console",
+    "title": "Console",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console",
+    "relUrl": "/panther/console"
+  },"34": {
+    "doc": "Views",
+    "title": "Overview",
+    "content": ". Views provide simple, configurable match criteria which may be used with the console filters to narrow down the events displayed to useful sub-sets. For example, the Mine view provided by default displays events assigned to the current user. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#overview",
+    "relUrl": "/panther/views#overview"
+  },"35": {
+    "doc": "Views",
+    "title": "Adding Views",
+    "content": "Views may be added by completing the three input boxes at the bottom of the User Views list and clicking the Add button. All three boxes must be completed, as described below. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#adding-views",
+    "relUrl": "/panther/views#adding-views"
+  },"36": {
+    "doc": "Views",
+    "title": "Name",
+    "content": "This should be a short text string to be used as an identifier for the new view. This will be displayed both in the User Views list and in the View filter selection drop-down box at the top of the console page. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#name",
+    "relUrl": "/panther/views#name"
+  },"37": {
+    "doc": "Views",
+    "title": "Field",
+    "content": "The event field name, chosen from a drop-down list of available data elements, corresponds to one of the fields shown in the console events display area. This is the field which must match the specified value in order to be displayed in the new view. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#field",
+    "relUrl": "/panther/views#field"
+  },"38": {
+    "doc": "Views",
+    "title": "Value",
+    "content": "The value which the selected field must match in order to be displayed. There are three formats available. String . The default format is the exact value to match against the field content as a literal string. summary: Authentication failure . Regular Expression . Rather than literal string values, regular expressions may be specified by surrounding them with forward slash characters /. summary: /.*Authentication.*/ . Number . Some fields contain numeric values, which may be matched by specifying straightforward numbers. tally: 5 . To match numbers that are in fact strings, surround the required value in double quotes. summary: \"42\" . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#value",
+    "relUrl": "/panther/views#value"
+  },"39": {
+    "doc": "Views",
+    "title": "Deleting a View",
+    "content": "Views can be deleted by first clicking on them in the User Views list, then clicking on the red trash icon. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#deleting-a-view",
+    "relUrl": "/panther/views#deleting-a-view"
+  },"40": {
+    "doc": "Views",
+    "title": "The Default View",
+    "content": "It is also possible to configure a default view for the console page. To do this, click on the view in the User Views list, then click on the Set Default button. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views#the-default-view",
+    "relUrl": "/panther/views#the-default-view"
+  },"41": {
+    "doc": "Views",
+    "title": "Views",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/views",
+    "relUrl": "/panther/views"
+  },"42": {
+    "doc": "Admin",
+    "title": "Introduction",
+    "content": "Users who are members of the “admin” group may carry out administration tasks from the Admin page accessed from the main navigation bar at the top of the Panther screen. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#introduction",
+    "relUrl": "/panther/admin#introduction"
+  },"43": {
+    "doc": "Admin",
+    "title": "User Administration",
+    "content": "There are two groups of users supported by Panther – “Admin” and “User”. Both can be used to login to the application, view the recorded data, and carry out most associated actions, but members of the “Admin” group may additionally: . | add more users | download the rsyslog configuration and TLS certificates | create API Keys | . The user created during the signup process will automatically be an “Admin” user, who may then go on to carry out any further configuration and create any more user accounts that may be required. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#user-administration",
+    "relUrl": "/panther/admin#user-administration"
+  },"44": {
+    "doc": "Admin",
+    "title": "Creating User Accounts",
+    "content": "New users may be added by completing the user name and email address input fields in the Console Users section of the administration page. Once a group has been selected and the Add button clicked, a link will be sent to the new user via email for them to use to set their password. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#creating-user-accounts",
+    "relUrl": "/panther/admin#creating-user-accounts"
+  },"45": {
+    "doc": "Admin",
+    "title": "Modifying User Accounts",
+    "content": "A menu to edit user accounts can be displayed by clicking on an entry in the list of Console Users. Deleting Users . To delete a user, click on the user in the users list to display the account control buttons, and then click the Delete button. Changing Email Addresses . To change a user’s email address, click on the user in the users list to display the account control buttons, type the new email address into the Email input field, and then click the Save button. Resetting Passwords . To reset a user’s password, click on the user in the users list to display the account control buttons, and then click the Reset Password button to send a password reset link via email to the user’s configured address. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#modifying-user-accounts",
+    "relUrl": "/panther/admin#modifying-user-accounts"
+  },"46": {
+    "doc": "Admin",
+    "title": "API Keys",
+    "content": "Panther also offers an API to import event logs. For security, registered users must supply unique keys when using this method to transfer data to Panther. Keys are generated simply by navigating to the API Keys section and clicking the Generate button. See the API documentation for more information. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#api-keys",
+    "relUrl": "/panther/admin#api-keys"
+  },"47": {
+    "doc": "Admin",
+    "title": "Delete All Events",
+    "content": "TODO . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#delete-all-events",
+    "relUrl": "/panther/admin#delete-all-events"
+  },"48": {
+    "doc": "Admin",
+    "title": "Integrations",
+    "content": "TODO . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#integrations",
+    "relUrl": "/panther/admin#integrations"
+  },"49": {
+    "doc": "Admin",
+    "title": "Console Fields",
+    "content": "TODO . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin#console-fields",
+    "relUrl": "/panther/admin#console-fields"
+  },"50": {
+    "doc": "Admin",
+    "title": "Admin",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/admin",
+    "relUrl": "/panther/admin"
+  },"51": {
+    "doc": "Dashboard",
+    "title": "Overview",
+    "content": "The dashboard provides an overview of the current contents of your event console. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard#overview",
+    "relUrl": "/panther/dashboard#overview"
+  },"52": {
+    "doc": "Dashboard",
+    "title": "Severities",
+    "content": "At the top of the dashboard, there is a row of counters for events processed in the event logs associated with each severity. These counters reflect the number of unique events logged, and will not increase if the same event log is processed multiple times. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard#severities",
+    "relUrl": "/panther/dashboard#severities"
+  },"53": {
+    "doc": "Dashboard",
+    "title": "Event Groups",
+    "content": "Counters are displayed in this section for events matching any created event groups – along with one special counter for events having no associated group and another for all events processed. The counters reflect the total numbers of unique event log entries in each of the respective groups, with the coloured bars representing the relative proportions of events having each of the severity levels. The actual numerical breakdowns can be inspected by moving the mouse pointer over each row. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard#event-groups",
+    "relUrl": "/panther/dashboard#event-groups"
+  },"54": {
+    "doc": "Dashboard",
+    "title": "Activity Stream",
+    "content": "The activity stream logs user interaction with Panther, including: . | Event acknowledgements and unacknowledgements | Event assignments | Event severity changes | Event clearances | Event deletions | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard#activity-stream",
+    "relUrl": "/panther/dashboard#activity-stream"
+  },"55": {
+    "doc": "Dashboard",
+    "title": "Inventory",
+    "content": "The inventory lists the names of hostnames that Panther has receieved events from and the last times they were seen. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard#inventory",
+    "relUrl": "/panther/dashboard#inventory"
+  },"56": {
+    "doc": "Dashboard",
+    "title": "Dashboard",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/dashboard",
+    "relUrl": "/panther/dashboard"
+  },"57": {
+    "doc": "About",
+    "title": "Background",
+    "content": "Panther has been designed and developed by Open Answers to meet our operational needs and those of our customers, having provided support and system monitoring services over three decades. Within the open source and SaaS monitoring space there are myriads of monitoring tools available. The typical monitoring toolset implements active monitoring, where the status of a component is checked or a synthetic transaction is tested repeatedly on a schedule. The outcome of that probe/status check/transaction etc is an active monitoring event. A passive event is an event of interest within an application or system that is generally triggered by real system or user behaviour. See some Example Events. The typical IT operational support team needs an event management platform in its toolset - a console and dashboard where events of all kinds can be aggregated, managed and assessed - all configured through simple rules that help support teams decide what the priority events are and where action needs to be taken. In a constantly changing IT support environment, the take-on of new applications and systems to support means that it is not possible to predict what kind of events (logged messages, errors, exceptions etc) may occur during day to day operations. To deal with this uncertainty, effective support teams will devise ways to ensure that events generated by critical systems and applications are checked regularly, or as soon as they occur. The open source and SaaS monitoring tools landscape is lacking when it comes to monitoring events in this way. There has traditionally been a very limited choice of expensive and difficult to implement “Enterprise” event management tools of this type that may be categorised as “manager of managers”. More recently, Log Management tools have appeared on the market which provide a way to aggregate and search historical log information. These are effective for investigating issues but have the limitation that they are not efficient for use in first-line support scenarios. By surfacing events of all types in one place, in a way that makes them easy to manage, Panther provides the perfect complement to System Monitoring, Log Management, Time-series database and Ticketing tools. Example Events . | Event Type | Example | . | Business Event | Customer unable to make a purchase | . | Operating system event | Filesystem is full | . | Operational event | Scheduled job finished unsuccessfully | . | Security event | Suspicious behavior detected by Intrusion Detection System | . | Application event | Application generated exception | . | Hardware event | UPS battery low | . | Network event | Switch detected spanning-tree loop | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about#background",
+    "relUrl": "/panther/about#background"
+  },"58": {
+    "doc": "About",
+    "title": "Architecture",
+    "content": "The (beta) cloud-based version of Panther is a service that ingests events received from TLS-secured authenticated sources using the Syslog protocol or Panther API. The Console provides a rich set of features that allow you to manage events and configure the service using a web browser. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about#architecture",
+    "relUrl": "/panther/about#architecture"
+  },"59": {
+    "doc": "About",
+    "title": "ITSM Event Management",
+    "content": "Thousands (or millions) of events happen across your IT infrastructure every day. Why? Because an event is simply a change to the state of an IT service or configuration item (CI) that is significant to its management. A server moving from online to idle could be an event, or the completion of a regular server maintenance script, or even an unexpected state at the end of a transaction. They’re worth knowing about, and there may even be an action you wish to take as a result. The objective of event management is to detect events, analyse them, and determine the right control action (if any). By doing so, the event management process also provides a strong foundation for service assurance, reporting, and service improvement. It’s important to know, though, that monitoring and event management are not the same thing. Monitoring is certainly a component of event management, in that it is a useful way to detect events as they occur. Event management, on the other hand, is focused on extracting meaning out of events, to help IT take appropriate actions (when required). Panther is a monitoring tool that enables your IT service management Event Management process. Open Answers Event Management Flow: . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about#itsm-event-management",
+    "relUrl": "/panther/about#itsm-event-management"
+  },"60": {
+    "doc": "About",
+    "title": "ITSM Incident Management",
+    "content": "In IT service management (ITSM), an Incident management process ensures that normal service operation is restored as quickly as possible and the business impact is minimized after an unplanned interruption or reduction in quality to an IT service, or an event that could increase the risk of this happening. All incidents are events, but not all events are incidents. Event and Incident management activities performed by First line support personnel will frequently overlap when they involve the diagnosis, identification, logging, categorisation, prioritisation of incidents. Panther is a monitoring tool that enables your IT service management Incident Management process. Open Answers Event Management Flow: . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about#itsm-incident-management",
+    "relUrl": "/panther/about#itsm-incident-management"
+  },"61": {
+    "doc": "About",
+    "title": "Note",
+    "content": "ITIL® is an acronym that is often used in reference to describing IT service management practices. The term ITIL® should only be used to describe AXELOS’ proprietary form of IT service management. Previously owned by the Cabinet Office, ITIL® and IT Infrastructure Library® are now Registered Trade Marks of AXELOS Limited. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about#note",
+    "relUrl": "/panther/about#note"
+  },"62": {
+    "doc": "About",
+    "title": "About",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/about",
+    "relUrl": "/panther/about"
+  },"63": {
+    "doc": "License",
+    "title": "License",
+    "content": "All copyright and other rights in this documentation and the licensed programs described in this documentation are the property of Open Answers Ltd unless otherwise stated. No part of it may be reproduced or communicated to any third party, without express written permission of Open Answers Ltd. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/license",
+    "relUrl": "/panther/license"
+  },"64": {
+    "doc": "Api",
+    "title": "Introduction",
+    "content": ". The API Console is a straightforward way to begin using the Panther API to submit event logs over HTTP. The purpose of the page is to allow the supported API fields to be manually input and then automatically formatted into the JSON structure required by Panther. The result may then either be submitted to the application from the page or copied into another utility, such as curl - for which an example input is generated at the bottom of the page. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#introduction",
+    "relUrl": "/panther/api#introduction"
+  },"65": {
+    "doc": "Api",
+    "title": "Creating an Event",
+    "content": "To prepare a new event definition for transmission to Panther, fill in the input fields in the top section of the Event API box. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#creating-an-event",
+    "relUrl": "/panther/api#creating-an-event"
+  },"66": {
+    "doc": "Api",
+    "title": "API Key",
+    "content": "For security, the API requires a valid API key in order to accept event data. These can be generated by users in the administration group from the admin page. The API key input field is a drop-down list that contains the currently available keys. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#api-key",
+    "relUrl": "/panther/api#api-key"
+  },"67": {
+    "doc": "Api",
+    "title": "Node",
+    "content": "The node is the host name that will be applied to the event log. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#node",
+    "relUrl": "/panther/api#node"
+  },"68": {
+    "doc": "Api",
+    "title": "Tag",
+    "content": "The tag is a name used as meta-data to identify and distinguish between different applications on the same host, or any other similar purpose. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#tag",
+    "relUrl": "/panther/api#tag"
+  },"69": {
+    "doc": "Api",
+    "title": "Summary",
+    "content": "The summary contains the message body of the event log. It describes the event that took place, and will give detailed information such as the error message or any diagnostics. It can also contain specific pieces of data about the event, such as the number of retries a failed login attempt was made. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#summary",
+    "relUrl": "/panther/api#summary"
+  },"70": {
+    "doc": "Api",
+    "title": "Severity",
+    "content": "The severity indicates how important the event log is, and can range from 0 (clear) to 5 (emergency). ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#severity",
+    "relUrl": "/panther/api#severity"
+  },"71": {
+    "doc": "Api",
+    "title": "Sending an Event",
+    "content": "Once the event fields have been filled in, the event can be sent to Panther by clicking on the Send button. The response will be displayed in the Response Body box at the bottom of the page. Alternatively, events can be sent using a different application by submitting the message displayed in the Request Body box as POST data to the address displayed in the URL box. One common method would be to use the example curl command line shown in the Curl box. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#sending-an-event",
+    "relUrl": "/panther/api#sending-an-event"
+  },"72": {
+    "doc": "Api",
+    "title": "Example",
+    "content": "This example of sending an event log using the GUI on the API page will also show how the example group rule works to put a log containing FAILED su in its summary into the Operating System group. | Select an API key from the drop-down box. | To create an event that will handled by the Operating System group, the Tag for the event must be os and the Summary must include the string FAILED su for. The Node can be any string value, and the severity level can be any value from 0 to 5, because a new value will be set by the group rule. Notice that the contents of the Request Body and Curl sections change as the input fields are set. | Once fields have been set, click the Send button. The Response Body section will update with the reply from Panther, indicating whether the request was successful or if there was a problem. | If all went well, the new entry should be in the console along with all the other event logs. | . If the the custom group rule has been applied, the group will be set to Operating System and the severity will be set to 3 - which is also shown by the entry being displayed in yellow. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api#example",
+    "relUrl": "/panther/api#example"
+  },"73": {
+    "doc": "Api",
+    "title": "Api",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/api",
+    "relUrl": "/panther/api"
+  },"74": {
+    "doc": "Getting Started",
+    "title": "Introduction",
+    "content": "The (beta) cloud-based version of Panther is accessible at app.panther.support. After a simple Sign-up process your dedicated secure Panther instance will be automatically provisioned within the Panther Cloud. When signing-up you will be asked to choose a unique name for your Console which will then be accessible at https://{your-console-name}.app.panther.support. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#introduction",
+    "relUrl": "/panther/getting-started#introduction"
+  },"75": {
+    "doc": "Getting Started",
+    "title": "Using Panther for the First Time",
+    "content": "Logging in (SaaS) . Login for the first time as the admin user using the password you gave during Sign-up - this is the default user account that will be used to administer Panther for the first time. Logging in (docker-compose.yml) . Note Instructions for launching the Docker images are on github.com/openanswers/panther-core . After starting the Panther containers for the first time an initial password will have been set. Unless configured that defaults will be: . | Username | admin | . | Password | admin | . This can be changed through the environment settings in docker-compose.yml e.g. event-console: ... environment: - ADMIN_USERNAME=admin - ADMIN_PASSWORD=admin - ADMIN_EMAIL=you@example.com . Welcome to the dashboard . The first screen that you will see is the Dashboard, which will look like this: . Clicking on Open Console will take you to the Console, which will look like this: . … this example shows that the Panther instance currently has two events in it. These particular messages are coming from the instance’s internal syslogd and http agents which will send periodic “keep-alive” events to indicate that they are healthy. Here, Agent http is alive and Agent syslogd are the details of the event, contained within the summary field (see next section). Double-click on an event to explore it a bit more. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#using-panther-for-the-first-time",
+    "relUrl": "/panther/getting-started#using-panther-for-the-first-time"
+  },"76": {
+    "doc": "Getting Started",
+    "title": "Anatomy of an Event",
+    "content": "A Panther Event is comprised of a number of data fields that are analagous to The Syslog Protocol. | Field | Meaning | Example value | . | _id | Internal Panther ID for the event | 5d8a4143f9f0b20100f778f9 | . | acknowledged | Indicates whether the event has been acknowledged | false | . | agent | The agent that received the event | syslogd | . | external_id | A reference to an external identifier (e.g. incident reference) | OA:12345 | . | first_occurrence | Date/time when the first event was received | 2019-09-24T16:16:03.825Z | . | last_occurrence | Date/time when the last event was received | 2019-10-04T12:22:49.063Z | . | group | Grouping applied to this event (determined by Group Rules) | Windows Servers | . | identifier | Unique identifier for this event (used for de-duplication) | 10740737389554512696 | . | node | Hostname of the device/server that originated the event | MYWINSERVER123 | . | owner | The panther user that has taken ownership of this event | dave | . | severity | Event Severity (0-5) | 5 _(Warning)_ | . | state_change | Date/time when the last change to the event occurred | 2019-10-04T12:22:49.066Z | . | summary | Event details | ERROR_OUTOFMEMORY: Not enough storage is available to complete this operation | . | tag | Name of program or process that generated the event | Microsoft-Windows-Kernel-General | . | tally | Count of event occurrences | 1416 | . By default, a unique Event is defined by the combination of the fields: {node}:{severity}:{tag}:{summary}. Multiple events that have the same values for these fields will be treated as the same event, with a counter (tally) incremented for each occurrence. Simple Rules can be used to adjust the contents of these fields (for example, to remove unique data from the summary field) which allows Events to be de-duplicated and enriched, making them easy to manage. Double-click on an event and select Fields to see its full contents: . See also: . | Syslog Mappings | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#anatomy-of-an-event",
+    "relUrl": "/panther/getting-started#anatomy-of-an-event"
+  },"77": {
+    "doc": "Getting Started",
+    "title": "Set Up Event Sources",
+    "content": "There are currently two main methods to import event logs into Panther from client event sources. The most straightforward of these is by means of compatible logging software, while an HTTP based API is also available for integration with bespoke client applications. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#set-up-event-sources",
+    "relUrl": "/panther/getting-started#set-up-event-sources"
+  },"78": {
+    "doc": "Getting Started",
+    "title": "Logging Software",
+    "content": "Panther offers the capability to receive event logs directly from supported third-party logging software. In order to facilitate this, archives of configuration files are available for download from the Panther admin page. More detailed information on the download procedure is available, along with configuration guides for each supported system, in the client configuration section. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#logging-software",
+    "relUrl": "/panther/getting-started#logging-software"
+  },"79": {
+    "doc": "Getting Started",
+    "title": "REST API",
+    "content": "For use cases where programmatic control is needed over the submission of event log entries, Panther provides an HTTP based REST API, incorporating a key for security. More details on this are available in the API section. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#rest-api",
+    "relUrl": "/panther/getting-started#rest-api"
+  },"80": {
+    "doc": "Getting Started",
+    "title": "Graylog (future)",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#graylog-future",
+    "relUrl": "/panther/getting-started#graylog-future"
+  },"81": {
+    "doc": "Getting Started",
+    "title": "SNMP Trap (future)",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#snmp-trap-future",
+    "relUrl": "/panther/getting-started#snmp-trap-future"
+  },"82": {
+    "doc": "Getting Started",
+    "title": "Event Source Examples",
+    "content": "The freely available software packages listed below can act as event sources for Panther. | Software | Official Website | Panther Configuration | . | ![NXLog](/panther-docs/panther/getting-started/media/nxlog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://nxlog.co/documentation) | [Linux](../config#nxlog-linux), [Windows](../config#nxlog-windows) | . | ![Rsyslog](/panther-docs/panther/getting-started/media/rsyslog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://www.rsyslog.com/doc/master/index.html) | [Linux](../config#rsyslog-linux) | . | Syslog-ng | TODO | TODO | . | Log4j | TODO | TODO | . | Log4Net | TODO | TODO | . Examples of approaches that can be used to monitor infrastructure and applications. | Technology | How | . | Linux | TODO | . | Windows | TODO | . | Cisco | TODO | . | MuleSoft Anypoint Platform | TODO | . | Dell Boomi | TODO | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#event-source-examples",
+    "relUrl": "/panther/getting-started#event-source-examples"
+  },"83": {
+    "doc": "Getting Started",
+    "title": "Configure a Global Rule",
+    "content": "Global rules are rules that will be applied to every event log that is received by Panther. By default, you will have some syslog rules and a simple example. There is a tutorial for adding further global rules in the Rules section. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#configure-a-global-rule",
+    "relUrl": "/panther/getting-started#configure-a-global-rule"
+  },"84": {
+    "doc": "Getting Started",
+    "title": "Configure a Group rule",
+    "content": "There is a tutorial on setting up group rules in the Rules section, along with a working example in the API section. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started#configure-a-group-rule",
+    "relUrl": "/panther/getting-started#configure-a-group-rule"
+  },"85": {
+    "doc": "Getting Started",
+    "title": "Getting Started",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/getting-started",
+    "relUrl": "/panther/getting-started"
+  },"86": {
+    "doc": "Rules",
+    "title": "Overview",
+    "content": "Rules control how log messages are turned into events. They can be used to discard, de-duplicate or modify the events that appear in the Panther console. Events are received from an external source, processed by user defined rules, and finally stored on the Panther server. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules#overview",
+    "relUrl": "/panther/rules#overview"
+  },"87": {
+    "doc": "Rules",
+    "title": "Processing order",
+    "content": ". The set of Syslog Mappings are processed first, followed by the Global Rules and, finally, any optional Groups Rules. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules#processing-order",
+    "relUrl": "/panther/rules#processing-order"
+  },"88": {
+    "doc": "Rules",
+    "title": "Details",
+    "content": "Each rule definition is stored in yaml file. A basic rule has a name followed by a Select verb, such as match, and an Action verb, such as discard: . name: 'Rule name' match: some_field: value discard: true . Multiple Selects are interpreted as logical “and” operations. This example is equivalent to “Select WHERE some_field matches the regular expression /value/ AND where other_field equals value”: . match: some_field: !!js/regexp /value/ equals: other_field: value . Multiple Actions can be specified too: . discard: true stop: true . A RuleSet, which groups the rules into logical areas, is made up of an array of Rules. These are processed in order, until the last rule is found or a stop or stop_ruleset action is encountered: . - name: 'Rule name' match: some_field: value set: new_field: 17 - name: 'No junk' equals: my_field: 'linux' set: that_field: 'Torvalds' . There are multiple RuleSets used during processing. The Global RuleSet is processed first, followed by any Group rules. Only one group will be matched, based on the Select verbs, and its rules then processed. Discard and Dedupe are shortcuts for what end up as rules that are placed before the rest of the RuleSet. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules#details",
+    "relUrl": "/panther/rules#details"
+  },"89": {
+    "doc": "Rules",
+    "title": "Rule Order",
+    "content": "Rules are applied in the following order: . | Syslog mapping | Global discards | Global de-duplication | Global rules, in order | Grouping, and the group rules. (group_order: if required? TODO - check) . | discard_first | dedupe | rules | discard_last | . | Discards that rely on other mappings | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules#rule-order",
+    "relUrl": "/panther/rules#rule-order"
+  },"90": {
+    "doc": "Rules",
+    "title": "Shortcut helpers",
+    "content": "There are some tasks that are repeated frequently, so the most reqular have shortcuts set up to make the rules more succinct. TODO - not clear how or where to use these! . syslog_mapping . Takes the syslog levels and maps them to console severities. | This is a required field (TODO - what is?) | . deduplicate . Shortcut for matching on summary with a regex and replacing it. - [ /match/, 'replace' ] . Or supply a second regex if you want a more specific search replace . - [ /match/, /replace_match/, 'replace' ] . | A match will short-circuit dedupe execution, but continue on to any following rules. | . discard / discard_last . Shortcuts for dumping messages, either before or after normal processing. Discard on summary: . - '/trash/' . Or write a full rule . - name: 'To the bin' match: summary: /trash/ . | Discard will short-circuit execution. | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules#shortcut-helpers",
+    "relUrl": "/panther/rules#shortcut-helpers"
+  },"91": {
+    "doc": "Rules",
+    "title": "Rules",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules",
+    "relUrl": "/panther/rules"
+  },"92": {
+    "doc": "Home",
+    "title": "IT Support - First Line Operations",
+    "content": "defintion: Event /ɪˈvɛnt/ noun a thing that happens or takes place, especially one of importance. Something has just happened: High performing IT Support teams are able to quickly respond to events by being able to answer these questions quickly: . | What does it mean? | How important is it? | Does action need to be taken? | Who is owning it? | If it happens again, do I want to know about it? | . This is achieved by having clear visibility of what needs actioning and being able to adapt to change - quickly and continuously. | ITSM Event Management | ITSM Incident Management | . ",
+    "url": "https://openanswers.github.io/panther-docs/#it-support---first-line-operations",
+    "relUrl": "/#it-support---first-line-operations"
+  },"93": {
+    "doc": "Home",
+    "title": "Panther Key Features",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/#panther-key-features",
+    "relUrl": "/#panther-key-features"
+  },"94": {
+    "doc": "Home",
+    "title": "Dashboard",
+    "content": ". | Summary | Inventory | Activity Stream | . | Dashboard Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#dashboard",
+    "relUrl": "/#dashboard"
+  },"95": {
+    "doc": "Home",
+    "title": "Console",
+    "content": ". | Event Management | Assign | Add Notes | Modify/Clear | Create rule from event | . | Console Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#console",
+    "relUrl": "/#console"
+  },"96": {
+    "doc": "Home",
+    "title": "Rules",
+    "content": ". | Global/Group | Enrich | De-Duplicate | Filter/Categorize | Prioritize | GUI Rule builder | . | Rules Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#rules",
+    "relUrl": "/#rules"
+  },"97": {
+    "doc": "Home",
+    "title": "Views",
+    "content": ". | Simple, configurable filters via field/value pairs | . | Views Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#views",
+    "relUrl": "/#views"
+  },"98": {
+    "doc": "Home",
+    "title": "API Console",
+    "content": ". | Create first events using API | . | API Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#api-console",
+    "relUrl": "/#api-console"
+  },"99": {
+    "doc": "Home",
+    "title": "Admin",
+    "content": ". | Users | Syslog config | Certs and Keys | API Keys | . | Admin Documentation | . ",
+    "url": "https://openanswers.github.io/panther-docs/#admin",
+    "relUrl": "/#admin"
+  },"100": {
+    "doc": "Home",
+    "title": "Home",
+    "content": ". Panther is an event consolidation and management application that centralizes and manages events from IT systems, networks and applications in a single console. Support and Operations teams benefit from increased efficiency and speed to problem resolution by being able to quickly and easily identify the monitoring events that are most important. Use the Panther Console and Rules to filter, acknowledge, group, enrich, de-duplicate, aggregate, categorize, assign ownership and manage events through an (ITSM) Event Management lifecycle. Events can be securely sourced and processed from any Syslog source and/or via the Panther API. Watch your Events like a Panther! . ",
+    "url": "https://openanswers.github.io/panther-docs/",
+    "relUrl": "/"
+  },"101": {
+    "doc": "Event schedule selection",
+    "title": "Schedules",
+    "content": "Schedules can be used to specify specific times of the week, enabling Rules to only match under those conditions. The Name is used to identify the schedule when editing Rules or Groups. It must be unique. Start and End specify a time range in the format of HH:MM. If the Start time is after the End time then the following conditions shall match: . | From midnight to the End time | From the Start time till midnight | . Days of the week can be chosen with the checkboxes . | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/schedules#schedules",
+    "relUrl": "/panther/rules/schedules#schedules"
+  },"102": {
+    "doc": "Event schedule selection",
+    "title": "Event schedule selection",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/schedules",
+    "relUrl": "/panther/rules/schedules"
+  },"103": {
+    "doc": "Event selection",
+    "title": "Selecting Events",
+    "content": "Rules need to be able to select an event to apply an action to. Multiple “select” options will combined into a logical “and” operation. Logical “or” operations can be achieved by: . | specifying an array of values for a “select” field | using a regular expression | operator | specifying an additional rule in the ruleset | . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#selecting-events",
+    "relUrl": "/panther/rules/selection#selecting-events"
+  },"104": {
+    "doc": "Event selection",
+    "title": "match",
+    "content": "Search a field for a match. When you supply some string the match becomes /some string/ with any regex literals escaped: . match: this_field: \"some string\" . You can also specify a regex directly with js-yaml type syntax . match: that_field: !!js/regexp /some \\d+ digit/ . You can achieve a logical “or” by specifying an array of objects . match: other_field: - string search - !!js/regexp /regex search/ - more . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#match",
+    "relUrl": "/panther/rules/selection#match"
+  },"105": {
+    "doc": "Event selection",
+    "title": "equals",
+    "content": "Exact match of the field some_field against the value 7: . equals: some_field: 7 . You can achieve a logical “or” by specifying an array of values: . match: other_field: - value - temp - over . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#equals",
+    "relUrl": "/panther/rules/selection#equals"
+  },"106": {
+    "doc": "Event selection",
+    "title": "field_exists",
+    "content": "Test for the existence of a field: . field_exists: some_name_of_existing_field . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#field_exists",
+    "relUrl": "/panther/rules/selection#field_exists"
+  },"107": {
+    "doc": "Event selection",
+    "title": "field_missing",
+    "content": "Test whether a field is missing: . field_missing: some_name_of_missing_field . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#field_missing",
+    "relUrl": "/panther/rules/selection#field_missing"
+  },"108": {
+    "doc": "Event selection",
+    "title": "starts_with",
+    "content": "Field starts with the string Starting Text. Like a regular expression /^Starting Text/ . starts_with a_field_name: 'Starting Text' . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#starts_with",
+    "relUrl": "/panther/rules/selection#starts_with"
+  },"109": {
+    "doc": "Event selection",
+    "title": "ends_with",
+    "content": "Field ends with the string Ending Text. Like a regular expression /Ending Text$/ . ends_with a_field_name: 'Ending Text' . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#ends_with",
+    "relUrl": "/panther/rules/selection#ends_with"
+  },"110": {
+    "doc": "Event selection",
+    "title": "Actions",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#actions",
+    "relUrl": "/panther/rules/selection#actions"
+  },"111": {
+    "doc": "Event selection",
+    "title": "set",
+    "content": ". | Set a field to a value: | . - name: super_set equals: node: 'super.man.com' set: group: 'Krypton' . | Set a field by using the value from another field: | . - name: prefix summary with node name set: summary: '{node} - {summary}' match: summary: /hello world/ . | Set a field using a paramaterized pattern match: | . - name: change the words around set: summary: '{match.2} {match.1} number: {match.2}' match: summary: /^(\\w+) (\\d+) (\\w+).*/ . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#set",
+    "relUrl": "/panther/rules/selection#set"
+  },"112": {
+    "doc": "Event selection",
+    "title": "replace",
+    "content": "A field holding the value to be replaced must be specified using field and the value to be replaced using this. The new value must be specified using with: . - name: other_replace match: summary: 'repeating repeating repeating' replace: field: message this: 'repeating' with: 'newrepeat' . A warning will be logged if the replacement doesn’t find a match. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#replace",
+    "relUrl": "/panther/rules/selection#replace"
+  },"113": {
+    "doc": "Event selection",
+    "title": "discard",
+    "content": "Sets the severity of the alert to -1, so that it will be discarded: . - name: other_replace match:: node: 'spurious.alerts' discard: true . TODO: is this incomplete? regex replace a value . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection#discard",
+    "relUrl": "/panther/rules/selection#discard"
+  },"114": {
+    "doc": "Event selection",
+    "title": "Event selection",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/selection",
+    "relUrl": "/panther/rules/selection"
+  },"115": {
+    "doc": "Settings",
+    "title": "Overview",
+    "content": "TODO. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/settings#overview",
+    "relUrl": "/panther/settings#overview"
+  },"116": {
+    "doc": "Settings",
+    "title": "Settings",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/settings",
+    "relUrl": "/panther/settings"
+  },"117": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Keyboard Shortcuts",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts",
+    "relUrl": "/panther/console/shortcuts"
+  },"118": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Select next event",
+    "content": "up/down . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#select-next-event",
+    "relUrl": "/panther/console/shortcuts#select-next-event"
+  },"119": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Add event to selection",
+    "content": "shift + up / shift + down . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#add-event-to-selection",
+    "relUrl": "/panther/console/shortcuts#add-event-to-selection"
+  },"120": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Delete the selected events",
+    "content": "backspace / delete . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#delete-the-selected-events",
+    "relUrl": "/panther/console/shortcuts#delete-the-selected-events"
+  },"121": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Open the events detailed information",
+    "content": "enter / return . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#open-the-events-detailed-information",
+    "relUrl": "/panther/console/shortcuts#open-the-events-detailed-information"
+  },"122": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Select all events in your view",
+    "content": "ctrl + a . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#select-all-events-in-your-view",
+    "relUrl": "/panther/console/shortcuts#select-all-events-in-your-view"
+  },"123": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Clear selection",
+    "content": "escape . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#clear-selection",
+    "relUrl": "/panther/console/shortcuts#clear-selection"
+  },"124": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Copy selected rows to clipboard",
+    "content": "ctrl + c . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#copy-selected-rows-to-clipboard",
+    "relUrl": "/panther/console/shortcuts#copy-selected-rows-to-clipboard"
+  },"125": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Assign the selected events to a user",
+    "content": "a . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#assign-the-selected-events-to-a-user",
+    "relUrl": "/panther/console/shortcuts#assign-the-selected-events-to-a-user"
+  },"126": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Clear selected events",
+    "content": "c . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#clear-selected-events",
+    "relUrl": "/panther/console/shortcuts#clear-selected-events"
+  },"127": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Toggle the Acknowledged flag of the event",
+    "content": "k . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#toggle-the-acknowledged-flag-of-the-event",
+    "relUrl": "/panther/console/shortcuts#toggle-the-acknowledged-flag-of-the-event"
+  },"128": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Set the severity for selected events",
+    "content": "s . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#set-the-severity-for-selected-events",
+    "relUrl": "/panther/console/shortcuts#set-the-severity-for-selected-events"
+  },"129": {
+    "doc": "Keyboard Shortcuts",
+    "title": "Show the help dialogue",
+    "content": "? / h . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/console/shortcuts#show-the-help-dialogue",
+    "relUrl": "/panther/console/shortcuts#show-the-help-dialogue"
+  },"130": {
+    "doc": "Rules file (yaml)",
+    "title": "Rules location",
+    "content": "Depending on which way you installed Panther there are differing locations of the rule files. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml#rules-location",
+    "relUrl": "/panther/rules/yaml#rules-location"
+  },"131": {
+    "doc": "Rules file (yaml)",
+    "title": "When using docker-compose.yml",
+    "content": "A docker volume will have been created, the name is comprised of two parts. &lt;directory-name&gt;_rules_vol . For example if your docker-compose.yml is in a directory called panther then the docker volume will be called panther_rules-vol . e.g. [root@localhost ~]# ls -l /var/lib/docker/volumes/panther-core_rules-vol/_data/ total 14 -rw-r--r-- 1 ansible ansible 588 Jul 7 2020 http.rules.yml -rw-r--r-- 1 ansible ansible 860 Jul 7 2020 server.rules.yml -rw-r--r-- 1 ansible ansible 2256 Jul 7 2020 syslogd.rules.yml . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml#when-using-docker-composeyml",
+    "relUrl": "/panther/rules/yaml#when-using-docker-composeyml"
+  },"132": {
+    "doc": "Rules file (yaml)",
+    "title": "When using app.panther.support",
+    "content": "The rules are not directly accessible to the end user. ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml#when-using-apppanthersupport",
+    "relUrl": "/panther/rules/yaml#when-using-apppanthersupport"
+  },"133": {
+    "doc": "Rules file (yaml)",
+    "title": "When running the source code",
+    "content": "The rules are located under rules/ . e.g. [root@localhost panther-core]# ls -l rules/ total 23 -rw-r--r-- 1 root root 588 Feb 23 11:36 http.rules.yml -rw-r--r-- 1 root root 815 Mar 26 16:12 server.rules.yml -rw-r--r-- 1 root root 2256 Feb 23 11:36 syslogd.rules.yml . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml#when-running-the-source-code",
+    "relUrl": "/panther/rules/yaml#when-running-the-source-code"
+  },"134": {
+    "doc": "Rules file (yaml)",
+    "title": "Rules format",
+    "content": "The server.rules.yml has three main sections . globals: groups: schedules: . ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml#rules-format",
+    "relUrl": "/panther/rules/yaml#rules-format"
+  },"135": {
+    "doc": "Rules file (yaml)",
+    "title": "Rules file (yaml)",
+    "content": " ",
+    "url": "https://openanswers.github.io/panther-docs/panther/rules/yaml",
+    "relUrl": "/panther/rules/yaml"
+  }
+}
