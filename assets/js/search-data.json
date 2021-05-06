@@ -221,425 +221,425 @@
     "url": "https://vinceoa.github.io/panther-docs/panther/rules/group",
     "relUrl": "/panther/rules/group"
   },"37": {
-    "doc": "Console",
-    "title": "Overview",
-    "content": ". The console is the main feature of Panther. It contains the system event logs, which are filtered and categorized based on account settings. There are numerous options for interacting with the events, such as deleting them, expanding them to display more information, or assigning them to specific users. These options are explained in more detail below. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console#overview",
-    "relUrl": "/panther/console#overview"
-  },"38": {
-    "doc": "Console",
-    "title": "Events",
-    "content": "To interact with one or more events, first select them using one of the following methods: . | Click on a single event to highlight it. | Click hold and drag (like drawing a box) to highlight many events. | Control click to add another single event to your selection. | Shift click to add a sequence of events to your selection. | Press keyboard shortcut ctrl+a to select all events. | . Right click to display the context menu of actions available for the selected events as outlined below. Acknowledge and Unacknowledge . New events will be in an unacknowledged state by default, displayed in bold text, unless a rule has been set that says otherwise. When an event is acknowledged from the right click menu, it will automatically be assigned to the user. Users can also acknowledge and unacknowledge events from the event details dialogue box. Add External ID . TODO . Add Note . TODO . Clear . Clearing sets an event to be removed from the console. Cleared events will be highlighted green for a time, so other users can be notified, until a background task deletes them. Assign . Events can be assigned to console users, who can then see them in the view page under the Mine user view. Severity . The severity levels of events can be changed to different values by selecting new ones from the provided menu options. Details . TODO . Copy Event . The summary details of the selected events can be copied into your local system’s copy buffer for pasting into other applications. Tools . TODO . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console#events",
-    "relUrl": "/panther/console#events"
-  },"39": {
-    "doc": "Console",
-    "title": "Event Details",
-    "content": "A dialogue box containing more detail of each event can be displayed by double clicking the event or pressing the enter key while an event is selected. In addition to the details available in the dialogue box, all actions in the console’s right click context menu are also available as buttons along the bottom. Along the top is a row of tabs providing access to further information, as outlined below. Details . The details tab provides an overview of the event, including a graph of up to 1000 of the event’s previous occurrences. Notes . Text notes can be added to events for further reference, which can also be seen by other users. History . Any activity that has occurred on the event can be seen in the history tab. This will include any rules that have been used during the event processing, and any actions taken by users from the console. Fields . All data associated with events may be inspected on the fields tab. Matches . The matches tab reports whether the events match any global or group rules. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console#event-details",
-    "relUrl": "/panther/console#event-details"
-  },"40": {
-    "doc": "Console",
-    "title": "Activity",
-    "content": "Recent user activity can be displayed by expanding the activity sidebar from the top-right corner of the console screen. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console#activity",
-    "relUrl": "/panther/console#activity"
-  },"41": {
-    "doc": "Console",
-    "title": "Filters",
-    "content": "The top-left corner of the console contains a row of filters which may be applied to display events matching a number of criteria. Group . Selecting a group from the drop-down menu will filter all events to just the group set up in the user’s rules. There are two special groups – All will display every event and No Group will display any events that have not been categorized. View . Views allow event fields to be queried for particular data and only matching events to be shown in the console. By default, the All, Mine, Acknowledged and Unacknowledged views are already available. Severity . Selecting a specific severity will filter the console data to only contain events matching the required value, while All will include everything. Multiple Filters . It is possible to select all the filters at the same time in order to monitor specific kinds of events. For example, it is possible to view all critical alerts that are assigned to a particular user and match the rules for a configured group. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console#filters",
-    "relUrl": "/panther/console#filters"
-  },"42": {
-    "doc": "Console",
-    "title": "Console",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/console",
-    "relUrl": "/panther/console"
-  },"43": {
-    "doc": "Views",
-    "title": "Overview",
-    "content": ". Views provide simple, configurable match criteria which may be used with the console filters to narrow down the events displayed to useful sub-sets. For example, the Mine view provided by default displays events assigned to the current user. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#overview",
-    "relUrl": "/panther/views#overview"
-  },"44": {
-    "doc": "Views",
-    "title": "Adding Views",
-    "content": "Views may be added by completing the three input boxes at the bottom of the User Views list and clicking the Add button. All three boxes must be completed, as described below. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#adding-views",
-    "relUrl": "/panther/views#adding-views"
-  },"45": {
-    "doc": "Views",
-    "title": "Name",
-    "content": "This should be a short text string to be used as an identifier for the new view. This will be displayed both in the User Views list and in the View filter selection drop-down box at the top of the console page. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#name",
-    "relUrl": "/panther/views#name"
-  },"46": {
-    "doc": "Views",
-    "title": "Field",
-    "content": "The event field name, chosen from a drop-down list of available data elements, corresponds to one of the fields shown in the console events display area. This is the field which must match the specified value in order to be displayed in the new view. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#field",
-    "relUrl": "/panther/views#field"
-  },"47": {
-    "doc": "Views",
-    "title": "Value",
-    "content": "The value which the selected field must match in order to be displayed. There are three formats available. String . The default format is the exact value to match against the field content as a literal string. summary: Authentication failure . Regular Expression . Rather than literal string values, regular expressions may be specified by surrounding them with forward slash characters /. summary: /.*Authentication.*/ . Number . Some fields contain numeric values, which may be matched by specifying straightforward numbers. tally: 5 . To match numbers that are in fact strings, surround the required value in double quotes. summary: \"42\" . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#value",
-    "relUrl": "/panther/views#value"
-  },"48": {
-    "doc": "Views",
-    "title": "Deleting a View",
-    "content": "Views can be deleted by first clicking on them in the User Views list, then clicking on the red trash icon. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#deleting-a-view",
-    "relUrl": "/panther/views#deleting-a-view"
-  },"49": {
-    "doc": "Views",
-    "title": "The Default View",
-    "content": "It is also possible to configure a default view for the console page. To do this, click on the view in the User Views list, then click on the Set Default button. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views#the-default-view",
-    "relUrl": "/panther/views#the-default-view"
-  },"50": {
-    "doc": "Views",
-    "title": "Views",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/views",
-    "relUrl": "/panther/views"
-  },"51": {
-    "doc": "Admin",
-    "title": "Introduction",
-    "content": "Users who are members of the “admin” group may carry out administration tasks from the Admin page accessed from the main navigation bar at the top of the Panther screen. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#introduction",
-    "relUrl": "/panther/admin#introduction"
-  },"52": {
-    "doc": "Admin",
-    "title": "User Administration",
-    "content": "There are two groups of users supported by Panther – “Admin” and “User”. Both can be used to login to the application, view the recorded data, and carry out most associated actions, but members of the “Admin” group may additionally: . | add more users | download the syslog configuration and TLS certificates | create API Keys | . The user created during the app.panther.support signup process will automatically be an “Admin” user, who may then go on to carry out any further configuration and create any more user accounts that may be required. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#user-administration",
-    "relUrl": "/panther/admin#user-administration"
-  },"53": {
-    "doc": "Admin",
-    "title": "Creating User Accounts",
-    "content": "New users may be added by completing the user name and email address input fields in the Console Users section of the administration page. Once a group has been selected and the Add button clicked, a link will be sent to the new user via email for them to use to set their password. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#creating-user-accounts",
-    "relUrl": "/panther/admin#creating-user-accounts"
-  },"54": {
-    "doc": "Admin",
-    "title": "Modifying User Accounts",
-    "content": "A menu to edit user accounts can be displayed by clicking on an entry in the list of Console Users. Deleting Users . To delete a user, click on the user in the users list to display the account control buttons, and then click the Delete button. Changing Email Addresses . To change a user’s email address, click on the user in the users list to display the account control buttons, type the new email address into the Email input field, and then click the Save button. Resetting Passwords . To reset a user’s password, click on the user in the users list to display the account control buttons, and then click the Reset Password button to send a password reset link via email to the user’s configured address. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#modifying-user-accounts",
-    "relUrl": "/panther/admin#modifying-user-accounts"
-  },"55": {
-    "doc": "Admin",
-    "title": "API Keys",
-    "content": "Panther also offers an API to import event logs. For security, registered users must supply unique keys when using this method to transfer data to Panther. Keys are generated simply by navigating to the API Keys section and clicking the Generate button. See the API documentation for more information. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#api-keys",
-    "relUrl": "/panther/admin#api-keys"
-  },"56": {
-    "doc": "Admin",
-    "title": "Delete All Events",
-    "content": "TODO . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#delete-all-events",
-    "relUrl": "/panther/admin#delete-all-events"
-  },"57": {
-    "doc": "Admin",
-    "title": "Console Fields",
-    "content": "TODO . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin#console-fields",
-    "relUrl": "/panther/admin#console-fields"
-  },"58": {
-    "doc": "Admin",
-    "title": "Admin",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/admin",
-    "relUrl": "/panther/admin"
-  },"59": {
-    "doc": "Dashboard",
-    "title": "Overview",
-    "content": "The dashboard provides an overview of the current contents of your event console. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#overview",
-    "relUrl": "/panther/dashboard#overview"
-  },"60": {
-    "doc": "Dashboard",
-    "title": "Severities",
-    "content": "At the top of the dashboard, there is a row of counters for events processed in the event logs associated with each severity. These counters reflect the number of unique events logged, and will not increase if the same event log is processed multiple times. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#severities",
-    "relUrl": "/panther/dashboard#severities"
-  },"61": {
-    "doc": "Dashboard",
-    "title": "Event Groups",
-    "content": "Counters are displayed in this section for events matching any created event groups – along with one special counter for events having no associated group and another for all events processed. The counters reflect the total numbers of unique event log entries in each of the respective groups, with the coloured bars representing the relative proportions of events having each of the severity levels. The actual numerical breakdowns can be inspected by moving the mouse pointer over each row. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#event-groups",
-    "relUrl": "/panther/dashboard#event-groups"
-  },"62": {
-    "doc": "Dashboard",
-    "title": "Activity Stream",
-    "content": "The activity stream logs user interaction with Panther, including: . | Event acknowledgements and unacknowledgements | Event assignments | Event severity changes | Event clearances | Event deletions | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#activity-stream",
-    "relUrl": "/panther/dashboard#activity-stream"
-  },"63": {
-    "doc": "Dashboard",
-    "title": "Inventory",
-    "content": "The inventory lists the names of hostnames that Panther has receieved events from and the last times they were seen. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#inventory",
-    "relUrl": "/panther/dashboard#inventory"
-  },"64": {
-    "doc": "Dashboard",
-    "title": "Dashboard",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard",
-    "relUrl": "/panther/dashboard"
-  },"65": {
-    "doc": "Sending Events to Panther",
-    "title": "Overview",
-    "content": "The most straightforward way to send events to Panther is to install and configure compatible logging software on the client system. While users should generally install the software according to the documentation published by the relevant providers, specific configuration is also required to enable communication with Panther. This and subsequent pages provide a guide to the configuration required once any necessary logging software has been installed. Note: The instructions here are based on clean installations of the logging software – if site-specific configurations have already been made, then it is necessary to download the Panther resources and integrate them following the providers’ documentation. All users should read the general advice in the introduction, but then refer to the relevant sections for their own specific software. | Introduction (all systems) | Rsyslog (Linux) | NXLog (Linux | Windows) | Panther API (HTTP) | AWS | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#overview",
-    "relUrl": "/panther/sending-events#overview"
-  },"66": {
-    "doc": "Sending Events to Panther",
-    "title": "Introduction",
-    "content": "Events can be received by Panther via two protocols: . | Protocol | Destination | Port | . | Secure Syslog | example.app.panther.support | 6514 | . | HTTP (Post) | https://app.panther.support | 443 | . These are both TCP ports and may require additional firewalling rules to permit connectivity depending on your networking setup. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#introduction",
-    "relUrl": "/panther/sending-events#introduction"
-  },"67": {
-    "doc": "Sending Events to Panther",
-    "title": "app.panther.support (secure syslog)",
-    "content": "Event data is sent securely to the Panther server from local clients via an encrypted connection using Transport Layer Security (TLS). This requires the use of certificates and unique client keys which are generated specifically for your Panther instance during the sign-up process. Note: TLS certificates are used for app.panther.support, self hosted Docker containers use standard Syslog . Since these certificates and keys are needed to configure client event loggers, they are bundled into “configuration archives” along with sample configuration files specific to the software, and made available for download from your Panther instance e.g. (example.app.panther.support). Note: You should ensure that the key.pem included in your configuration archive is kept secure to prevent its use by anyone else. The configuration process therefore is to download an appropriate archive, to load it in a suitable location for the software, and to carry out any remaining package or system specific tasks. There are specific instructions for configuring the following Event senders: . | Rsyslog | NXLog | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#apppanthersupport-secure-syslog",
-    "relUrl": "/panther/sending-events#apppanthersupport-secure-syslog"
-  },"68": {
-    "doc": "Sending Events to Panther",
-    "title": "Other Syslog agents",
-    "content": "Any Sylog agent can be used so long as it supports TLS Client certificate authentication, the necessary certificate files can be acquired from the Rsyslog configuration archive. The following files included in the rsyslog-config-&lt;system&gt;.tar can be used as the basis for other Syslog agents: . | cert.pem | TLS Client certificate (self signed) | . | key.pem | TLS Client Key | . | panther-cert-chain.pem | The (self signed) Certificate chain of trust | . Syslog events are sent to app.panther.support:6514 (6514 is the secure syslog port). ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#other-syslog-agents",
-    "relUrl": "/panther/sending-events#other-syslog-agents"
-  },"69": {
-    "doc": "Sending Events to Panther",
-    "title": "app.panther.support (HTTPS API)",
-    "content": "Event data is sent securely to the Panther server from local clients via an encrypted HTTPS connection. This does not require any additional certficates to be installed and will use your systems standard TLS authority chain of trust. For futher information please consult the general API Console documentation, or the AWS-Events2Panther. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#apppanthersupport-https-api",
-    "relUrl": "/panther/sending-events#apppanthersupport-https-api"
-  },"70": {
-    "doc": "Sending Events to Panther",
-    "title": "Self Hosted Panther",
-    "content": "TODO . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#self-hosted-panther",
-    "relUrl": "/panther/sending-events#self-hosted-panther"
-  },"71": {
-    "doc": "Sending Events to Panther",
-    "title": "Sending Events to Panther",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events",
-    "relUrl": "/panther/sending-events"
-  },"72": {
-    "doc": "About",
-    "title": "Background",
-    "content": "Panther has been designed and developed by Open Answers to meet our operational needs and those of our customers, having provided support and system monitoring services over three decades. Within the open source and SaaS monitoring space there are myriads of monitoring tools available. The typical monitoring toolset implements active monitoring, where the status of a component is checked or a synthetic transaction is tested repeatedly on a schedule. The outcome of that probe/status check/transaction etc is an active monitoring event. A passive event is an event of interest within an application or system that is generally triggered by real system or user behaviour. See some Example Events. The typical IT operational support team needs an event management platform in its toolset - a console and dashboard where events of all kinds can be aggregated, managed and assessed - all configured through simple rules that help support teams decide what the priority events are and where action needs to be taken. In a constantly changing IT support environment, the take-on of new applications and systems to support means that it is not possible to predict what kind of events (logged messages, errors, exceptions etc) may occur during day to day operations. To deal with this uncertainty, effective support teams will devise ways to ensure that events generated by critical systems and applications are checked regularly, or as soon as they occur. The open source and SaaS monitoring tools landscape is lacking when it comes to monitoring events in this way. There has traditionally been a very limited choice of expensive and difficult to implement “Enterprise” event management tools of this type that may be categorised as “manager of managers”. More recently, Log Management tools have appeared on the market which provide a way to aggregate and search historical log information. These are effective for investigating issues but have the limitation that they are not efficient for use in first-line support scenarios. By surfacing events of all types in one place, in a way that makes them easy to manage, Panther provides the perfect complement to System Monitoring, Log Management, Time-series database and Ticketing tools. Example Events . | Event Type | Example | . | Business Event | Customer unable to make a purchase | . | Operating system event | Filesystem is full | . | Operational event | Scheduled job finished unsuccessfully | . | Security event | Suspicious behavior detected by Intrusion Detection System | . | Application event | Application generated exception | . | Hardware event | UPS battery low | . | Network event | Switch detected spanning-tree loop | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about#background",
-    "relUrl": "/panther/about#background"
-  },"73": {
-    "doc": "About",
-    "title": "Architecture",
-    "content": "The (beta) cloud-based version of Panther is a service that ingests events received from TLS-secured authenticated sources using the Syslog protocol or Panther API. The Console provides a rich set of features that allow you to manage events and configure the service using a web browser. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about#architecture",
-    "relUrl": "/panther/about#architecture"
-  },"74": {
-    "doc": "About",
-    "title": "ITSM Event Management",
-    "content": "Thousands (or millions) of events happen across your IT infrastructure every day. Why? Because an event is simply a change to the state of an IT service or configuration item (CI) that is significant to its management. A server moving from online to idle could be an event, or the completion of a regular server maintenance script, or even an unexpected state at the end of a transaction. They’re worth knowing about, and there may even be an action you wish to take as a result. The objective of event management is to detect events, analyse them, and determine the right control action (if any). By doing so, the event management process also provides a strong foundation for service assurance, reporting, and service improvement. It’s important to know, though, that monitoring and event management are not the same thing. Monitoring is certainly a component of event management, in that it is a useful way to detect events as they occur. Event management, on the other hand, is focused on extracting meaning out of events, to help IT take appropriate actions (when required). Panther is a monitoring tool that enables your IT service management Event Management process. Open Answers Event Management Flow: . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about#itsm-event-management",
-    "relUrl": "/panther/about#itsm-event-management"
-  },"75": {
-    "doc": "About",
-    "title": "ITSM Incident Management",
-    "content": "In IT service management (ITSM), an Incident management process ensures that normal service operation is restored as quickly as possible and the business impact is minimized after an unplanned interruption or reduction in quality to an IT service, or an event that could increase the risk of this happening. All incidents are events, but not all events are incidents. Event and Incident management activities performed by First line support personnel will frequently overlap when they involve the diagnosis, identification, logging, categorisation, prioritisation of incidents. Panther is a monitoring tool that enables your IT service management Incident Management process. Open Answers Event Management Flow: . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about#itsm-incident-management",
-    "relUrl": "/panther/about#itsm-incident-management"
-  },"76": {
-    "doc": "About",
-    "title": "Note",
-    "content": "ITIL® is an acronym that is often used in reference to describing IT service management practices. The term ITIL® should only be used to describe AXELOS’ proprietary form of IT service management. Previously owned by the Cabinet Office, ITIL® and IT Infrastructure Library® are now Registered Trade Marks of AXELOS Limited. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about#note",
-    "relUrl": "/panther/about#note"
-  },"77": {
-    "doc": "About",
-    "title": "About",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/about",
-    "relUrl": "/panther/about"
-  },"78": {
     "doc": "License",
     "title": "License",
     "content": "All copyright and other rights in this documentation and the licensed programs described in this documentation are the property of Open Answers Ltd unless otherwise stated. No part of it may be reproduced or communicated to any third party, without express written permission of Open Answers Ltd. ",
     "url": "https://vinceoa.github.io/panther-docs/panther/license",
     "relUrl": "/panther/license"
-  },"79": {
-    "doc": "API Console",
+  },"38": {
+    "doc": "Sending Events to Panther",
+    "title": "Overview",
+    "content": "The most straightforward way to send events to Panther is to install and configure compatible logging software on the client system. While users should generally install the software according to the documentation published by the relevant providers, specific configuration is also required to enable communication with Panther. This and subsequent pages provide a guide to the configuration required once any necessary logging software has been installed. Note: The instructions here are based on clean installations of the logging software – if site-specific configurations have already been made, then it is necessary to download the Panther resources and integrate them following the providers’ documentation. All users should read the general advice in the introduction, but then refer to the relevant sections for their own specific software. | Introduction (all systems) | Rsyslog (Linux) | NXLog (Linux | Windows) | Panther API (HTTP) | AWS | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#overview",
+    "relUrl": "/panther/sending-events#overview"
+  },"39": {
+    "doc": "Sending Events to Panther",
     "title": "Introduction",
-    "content": ". The API Console is a straightforward way to begin using the Panther API to submit event logs over HTTP. The purpose of the page is to allow the supported API fields to be manually input and then automatically formatted into the JSON structure required by Panther. The result may then either be submitted to the application from the page or copied into another utility, such as curl - for which an example input is generated at the bottom of the page. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#introduction",
-    "relUrl": "/panther/api#introduction"
-  },"80": {
-    "doc": "API Console",
-    "title": "Creating an Event",
-    "content": "To prepare a new event definition for transmission to Panther, fill in the input fields in the top section of the Event API box. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#creating-an-event",
-    "relUrl": "/panther/api#creating-an-event"
-  },"81": {
-    "doc": "API Console",
-    "title": "API Key",
-    "content": "For security, the API requires a valid API key in order to accept event data. These can be generated by users in the administration group from the admin page. The API key input field is a drop-down list that contains the currently available keys. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#api-key",
-    "relUrl": "/panther/api#api-key"
-  },"82": {
-    "doc": "API Console",
-    "title": "Node",
-    "content": "The node is the host name that will be applied to the event log. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#node",
-    "relUrl": "/panther/api#node"
-  },"83": {
-    "doc": "API Console",
-    "title": "Tag",
-    "content": "The tag is a name used as meta-data to identify and distinguish between different applications on the same host, or any other similar purpose. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#tag",
-    "relUrl": "/panther/api#tag"
-  },"84": {
-    "doc": "API Console",
-    "title": "Summary",
-    "content": "The summary contains the message body of the event log. It describes the event that took place, and will give detailed information such as the error message or any diagnostics. It can also contain specific pieces of data about the event, such as the number of retries a failed login attempt was made. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#summary",
-    "relUrl": "/panther/api#summary"
-  },"85": {
-    "doc": "API Console",
-    "title": "Severity",
-    "content": "The severity indicates how important the event log is, and can range from 0 (clear) to 5 (emergency). ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#severity",
-    "relUrl": "/panther/api#severity"
-  },"86": {
-    "doc": "API Console",
-    "title": "Sending an Event",
-    "content": "Once the event fields have been filled in, the event can be sent to Panther by clicking on the Send button. The response will be displayed in the Response Body box at the bottom of the page. Alternatively, events can be sent using a different application by submitting the message displayed in the Request Body box as POST data to the address displayed in the URL box. One common method would be to use the example curl command line shown in the Curl box. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#sending-an-event",
-    "relUrl": "/panther/api#sending-an-event"
-  },"87": {
-    "doc": "API Console",
-    "title": "Example",
-    "content": "This example of sending an event log using the GUI on the API page will also show how the example group rule works to put a log containing FAILED su in its summary into the Operating System group. | Select an API key from the drop-down box. | To create an event that will handled by the Operating System group, the Tag for the event must be os and the Summary must include the string FAILED su for. The Node can be any string value, and the severity level can be any value from 0 to 5, because a new value will be set by the group rule. Notice that the contents of the Request Body and Curl sections change as the input fields are set. | Once fields have been set, click the Send button. The Response Body section will update with the reply from Panther, indicating whether the request was successful or if there was a problem. | If all went well, the new entry should be in the console along with all the other event logs. | . If the the custom group rule has been applied, the group will be set to Operating System and the severity will be set to 3 - which is also shown by the entry being displayed in yellow. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api#example",
-    "relUrl": "/panther/api#example"
-  },"88": {
-    "doc": "API Console",
-    "title": "API Console",
+    "content": "Events can be received by Panther via two protocols: . | Protocol | Destination | Port | . | Secure Syslog | example.app.panther.support | 6514 | . | HTTP (Post) | https://app.panther.support | 443 | . These are both TCP ports and may require additional firewalling rules to permit connectivity depending on your networking setup. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#introduction",
+    "relUrl": "/panther/sending-events#introduction"
+  },"40": {
+    "doc": "Sending Events to Panther",
+    "title": "app.panther.support (secure syslog)",
+    "content": "Event data is sent securely to the Panther server from local clients via an encrypted connection using Transport Layer Security (TLS). This requires the use of certificates and unique client keys which are generated specifically for your Panther instance during the sign-up process. Note: TLS certificates are used for app.panther.support, self hosted Docker containers use standard Syslog . Since these certificates and keys are needed to configure client event loggers, they are bundled into “configuration archives” along with sample configuration files specific to the software, and made available for download from your Panther instance e.g. (example.app.panther.support). Note: You should ensure that the key.pem included in your configuration archive is kept secure to prevent its use by anyone else. The configuration process therefore is to download an appropriate archive, to load it in a suitable location for the software, and to carry out any remaining package or system specific tasks. There are specific instructions for configuring the following Event senders: . | Rsyslog | NXLog | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#apppanthersupport-secure-syslog",
+    "relUrl": "/panther/sending-events#apppanthersupport-secure-syslog"
+  },"41": {
+    "doc": "Sending Events to Panther",
+    "title": "Other Syslog agents",
+    "content": "Any Sylog agent can be used so long as it supports TLS Client certificate authentication, the necessary certificate files can be acquired from the Rsyslog configuration archive. The following files included in the rsyslog-config-&lt;system&gt;.tar can be used as the basis for other Syslog agents: . | cert.pem | TLS Client certificate (self signed) | . | key.pem | TLS Client Key | . | panther-cert-chain.pem | The (self signed) Certificate chain of trust | . Syslog events are sent to app.panther.support:6514 (6514 is the secure syslog port). ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#other-syslog-agents",
+    "relUrl": "/panther/sending-events#other-syslog-agents"
+  },"42": {
+    "doc": "Sending Events to Panther",
+    "title": "app.panther.support (HTTPS API)",
+    "content": "Event data is sent securely to the Panther server from local clients via an encrypted HTTPS connection. This does not require any additional certficates to be installed and will use your systems standard TLS authority chain of trust. For futher information please consult the general API Console documentation, or the AWS-Events2Panther. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#apppanthersupport-https-api",
+    "relUrl": "/panther/sending-events#apppanthersupport-https-api"
+  },"43": {
+    "doc": "Sending Events to Panther",
+    "title": "Self Hosted Panther",
+    "content": "TODO . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events#self-hosted-panther",
+    "relUrl": "/panther/sending-events#self-hosted-panther"
+  },"44": {
+    "doc": "Sending Events to Panther",
+    "title": "Sending Events to Panther",
     "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/api",
-    "relUrl": "/panther/api"
-  },"89": {
-    "doc": "Getting Started",
+    "url": "https://vinceoa.github.io/panther-docs/panther/sending-events",
+    "relUrl": "/panther/sending-events"
+  },"45": {
+    "doc": "Admin",
     "title": "Introduction",
-    "content": "The (beta) cloud-based version of Panther is accessible at app.panther.support. After a simple Sign-up process your dedicated secure Panther instance will be automatically provisioned within the Panther Cloud. When signing-up you will be asked to choose a unique name for your Console which will then be accessible at https://{example}.app.panther.support. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#introduction",
-    "relUrl": "/panther/getting-started#introduction"
-  },"90": {
-    "doc": "Getting Started",
-    "title": "Using Panther for the First Time",
-    "content": "Logging in (app.panther.support) . Login for the first time as the admin user using the password you gave during Sign-up - this is the default user account that will be used to administer Panther for the first time. Additional users can then be created from the admin tab. Logging in (docker-compose.yml) . Note Instructions for launching the Docker images are on github.com/openanswers/panther-core . After starting the Panther containers for the first time an initial password will have been set. Unless configured that defaults will be: . | Username | admin | . | Password | admin | . This can be changed through the environment settings in docker-compose.yml e.g. event-console: ... environment: - ADMIN_USERNAME=admin - ADMIN_PASSWORD=admin - ADMIN_EMAIL=you@example.com . Welcome to the dashboard . The first screen that you will see is the Dashboard, which will look like this: . Clicking on Open Console will take you to the Console, which will look like this: . … this example shows that the Panther instance currently has two events in it. These particular messages are coming from the instance’s internal syslogd and http agents which will send periodic “keep-alive” events to indicate that they are healthy. Here, Agent http is alive and Agent syslogd are the details of the event, contained within the summary field (see next section). Double-click on an event to explore it a bit more. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#using-panther-for-the-first-time",
-    "relUrl": "/panther/getting-started#using-panther-for-the-first-time"
-  },"91": {
-    "doc": "Getting Started",
-    "title": "Anatomy of an Event",
-    "content": "A Panther Event is comprised of a number of data fields that are analagous to The Syslog Protocol. | Field | Meaning | Example value | . | _id | Internal Panther ID for the event | 5d8a4143f9f0b20100f778f9 | . | acknowledged | Indicates whether the event has been acknowledged | false | . | agent | The agent that received the event | syslogd | . | external_id | A reference to an external identifier (e.g. incident reference) | OA:12345 | . | first_occurrence | Date/time when the first event was received | 2019-09-24T16:16:03.825Z | . | last_occurrence | Date/time when the last event was received | 2019-10-04T12:22:49.063Z | . | group | Grouping applied to this event (determined by Group Rules) | Windows Servers | . | identifier | Unique identifier for this event (used for de-duplication) | 10740737389554512696 | . | node | Hostname of the device/server that originated the event | MYWINSERVER123 | . | owner | The Panther user that has taken ownership of this event | dave | . | severity | Event Severity (0-5) | 5 _(Warning)_ | . | state_change | Date/time when the last change to the event occurred | 2019-10-04T12:22:49.066Z | . | summary | Event details | ERROR_OUTOFMEMORY: Not enough storage is available to complete this operation | . | tag | Name of program or process that generated the event | Microsoft-Windows-Kernel-General | . | tally | Count of event occurrences | 1416 | . By default, a unique Event is defined by the combination of the fields: {node}:{severity}:{tag}:{summary}. Multiple events that have the same values for these fields will be treated as the same event, with a counter (tally) incremented for each occurrence. Simple Rules can be used to adjust the contents of these fields (for example, to remove unique data from the summary field) which allows Events to be de-duplicated and enriched, making them easy to manage. Double-click on an event and select Fields to see its full contents: . See also: . | Syslog Mappings | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#anatomy-of-an-event",
-    "relUrl": "/panther/getting-started#anatomy-of-an-event"
-  },"92": {
-    "doc": "Getting Started",
-    "title": "Set Up Event Sources",
-    "content": "There are currently two main methods to import event logs into Panther from client event sources. The most straightforward of these is by means of compatible logging software, while an HTTP based API is also available for integration with bespoke client applications. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#set-up-event-sources",
-    "relUrl": "/panther/getting-started#set-up-event-sources"
-  },"93": {
-    "doc": "Getting Started",
-    "title": "Logging Software",
-    "content": "Panther offers the capability to receive event logs directly from supported third-party logging software. In order to facilitate this, archives of configuration files are available for download from the Panther admin page. More detailed information on the download procedure is available, along with configuration guides for each supported system, in the client configuration section. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#logging-software",
-    "relUrl": "/panther/getting-started#logging-software"
-  },"94": {
-    "doc": "Getting Started",
-    "title": "REST API",
-    "content": "For use cases where programmatic control is needed over the submission of event log entries, Panther provides an HTTP based REST API, incorporating a key for security. More details on this are available in the API section. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#rest-api",
-    "relUrl": "/panther/getting-started#rest-api"
-  },"95": {
-    "doc": "Getting Started",
-    "title": "Graylog (future)",
+    "content": "Users who are members of the “admin” group may carry out administration tasks from the Admin page accessed from the main navigation bar at the top of the Panther screen. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#introduction",
+    "relUrl": "/panther/admin#introduction"
+  },"46": {
+    "doc": "Admin",
+    "title": "User Administration",
+    "content": "There are two groups of users supported by Panther – “Admin” and “User”. Both can be used to login to the application, view the recorded data, and carry out most associated actions, but members of the “Admin” group may additionally: . | add more users | download the syslog configuration and TLS certificates | create API Keys | . The user created during the app.panther.support signup process will automatically be an “Admin” user, who may then go on to carry out any further configuration and create any more user accounts that may be required. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#user-administration",
+    "relUrl": "/panther/admin#user-administration"
+  },"47": {
+    "doc": "Admin",
+    "title": "Creating User Accounts",
+    "content": "New users may be added by completing the user name and email address input fields in the Console Users section of the administration page. Once a group has been selected and the Add button clicked, a link will be sent to the new user via email for them to use to set their password. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#creating-user-accounts",
+    "relUrl": "/panther/admin#creating-user-accounts"
+  },"48": {
+    "doc": "Admin",
+    "title": "Modifying User Accounts",
+    "content": "A menu to edit user accounts can be displayed by clicking on an entry in the list of Console Users. Deleting Users . To delete a user, click on the user in the users list to display the account control buttons, and then click the Delete button. Changing Email Addresses . To change a user’s email address, click on the user in the users list to display the account control buttons, type the new email address into the Email input field, and then click the Save button. Resetting Passwords . To reset a user’s password, click on the user in the users list to display the account control buttons, and then click the Reset Password button to send a password reset link via email to the user’s configured address. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#modifying-user-accounts",
+    "relUrl": "/panther/admin#modifying-user-accounts"
+  },"49": {
+    "doc": "Admin",
+    "title": "API Keys",
+    "content": "Panther also offers an API to import event logs. For security, registered users must supply unique keys when using this method to transfer data to Panther. Keys are generated simply by navigating to the API Keys section and clicking the Generate button. See the API documentation for more information. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#api-keys",
+    "relUrl": "/panther/admin#api-keys"
+  },"50": {
+    "doc": "Admin",
+    "title": "Delete All Events",
+    "content": "TODO . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#delete-all-events",
+    "relUrl": "/panther/admin#delete-all-events"
+  },"51": {
+    "doc": "Admin",
+    "title": "Console Fields",
+    "content": "TODO . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin#console-fields",
+    "relUrl": "/panther/admin#console-fields"
+  },"52": {
+    "doc": "Admin",
+    "title": "Admin",
     "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#graylog-future",
-    "relUrl": "/panther/getting-started#graylog-future"
-  },"96": {
-    "doc": "Getting Started",
-    "title": "SNMP Trap (future)",
+    "url": "https://vinceoa.github.io/panther-docs/panther/admin",
+    "relUrl": "/panther/admin"
+  },"53": {
+    "doc": "Console",
+    "title": "Overview",
+    "content": ". The console is the main feature of Panther. It contains the system event logs, which are filtered and categorized based on account settings. There are numerous options for interacting with the events, such as deleting them, expanding them to display more information, or assigning them to specific users. These options are explained in more detail below. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/console#overview",
+    "relUrl": "/panther/console#overview"
+  },"54": {
+    "doc": "Console",
+    "title": "Events",
+    "content": "To interact with one or more events, first select them using one of the following methods: . | Click on a single event to highlight it. | Click hold and drag (like drawing a box) to highlight many events. | Control click to add another single event to your selection. | Shift click to add a sequence of events to your selection. | Press keyboard shortcut ctrl+a to select all events. | . Right click to display the context menu of actions available for the selected events as outlined below. Acknowledge and Unacknowledge . New events will be in an unacknowledged state by default, displayed in bold text, unless a rule has been set that says otherwise. When an event is acknowledged from the right click menu, it will automatically be assigned to the user. Users can also acknowledge and unacknowledge events from the event details dialogue box. Add External ID . TODO . Add Note . TODO . Clear . Clearing sets an event to be removed from the console. Cleared events will be highlighted green for a time, so other users can be notified, until a background task deletes them. Assign . Events can be assigned to console users, who can then see them in the view page under the Mine user view. Severity . The severity levels of events can be changed to different values by selecting new ones from the provided menu options. Details . TODO . Copy Event . The summary details of the selected events can be copied into your local system’s copy buffer for pasting into other applications. Tools . TODO . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/console#events",
+    "relUrl": "/panther/console#events"
+  },"55": {
+    "doc": "Console",
+    "title": "Event Details",
+    "content": "A dialogue box containing more detail of each event can be displayed by double clicking the event or pressing the enter key while an event is selected. In addition to the details available in the dialogue box, all actions in the console’s right click context menu are also available as buttons along the bottom. Along the top is a row of tabs providing access to further information, as outlined below. Details . The details tab provides an overview of the event, including a graph of up to 1000 of the event’s previous occurrences. Notes . Text notes can be added to events for further reference, which can also be seen by other users. History . Any activity that has occurred on the event can be seen in the history tab. This will include any rules that have been used during the event processing, and any actions taken by users from the console. Fields . All data associated with events may be inspected on the fields tab. Matches . The matches tab reports whether the events match any global or group rules. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/console#event-details",
+    "relUrl": "/panther/console#event-details"
+  },"56": {
+    "doc": "Console",
+    "title": "Activity",
+    "content": "Recent user activity can be displayed by expanding the activity sidebar from the top-right corner of the console screen. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/console#activity",
+    "relUrl": "/panther/console#activity"
+  },"57": {
+    "doc": "Console",
+    "title": "Filters",
+    "content": "The top-left corner of the console contains a row of filters which may be applied to display events matching a number of criteria. Group . Selecting a group from the drop-down menu will filter all events to just the group set up in the user’s rules. There are two special groups – All will display every event and No Group will display any events that have not been categorized. View . Views allow event fields to be queried for particular data and only matching events to be shown in the console. By default, the All, Mine, Acknowledged and Unacknowledged views are already available. Severity . Selecting a specific severity will filter the console data to only contain events matching the required value, while All will include everything. Multiple Filters . It is possible to select all the filters at the same time in order to monitor specific kinds of events. For example, it is possible to view all critical alerts that are assigned to a particular user and match the rules for a configured group. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/console#filters",
+    "relUrl": "/panther/console#filters"
+  },"58": {
+    "doc": "Console",
+    "title": "Console",
     "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#snmp-trap-future",
-    "relUrl": "/panther/getting-started#snmp-trap-future"
-  },"97": {
-    "doc": "Getting Started",
-    "title": "Event Source Examples",
-    "content": "The freely available software packages listed below can act as event sources for Panther. | Software | Official Website | Panther Configuration | . | ![NXLog](/panther-docs/panther/getting-started/media/nxlog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://nxlog.co/documentation){:target=\"_blank\"} | [Linux](/panther-docs/panther/sending-events/nxlog#nxlog-configuration-linux), [Windows](/panther-docs/panther/sending-events/nxlog#nxlog-configuration-windows) | . | ![Rsyslog](/panther-docs/panther/getting-started/media/rsyslog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://www.rsyslog.com/doc/master/index.html){:target=\"_blank\"} | [Linux](/panther-docs/panther/sending-events/rsyslog#rsyslog-configuration) | . | Syslog-ng | TODO | TODO | . | Log4j | TODO | TODO | . | Log4Net | TODO | TODO | . | ![AWS](/panther-docs/img/aws-white.png){:height=\"30px\"} | TODO | [Linux](/panther-docs/panther/sending-events/aws) | . Examples of approaches that can be used to monitor infrastructure and applications. | Technology | How | . | Linux | TODO | . | Windows | TODO | . | Cisco | TODO | . | MuleSoft Anypoint Platform | TODO | . | Dell Boomi | TODO | . ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#event-source-examples",
-    "relUrl": "/panther/getting-started#event-source-examples"
-  },"98": {
-    "doc": "Getting Started",
-    "title": "Configure a Global Rule",
-    "content": "Global rules are rules that will be applied to every event log that is received by Panther. By default, you will have some syslog rules and a simple example. There is a tutorial for adding further global rules in the Rules section. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#configure-a-global-rule",
-    "relUrl": "/panther/getting-started#configure-a-global-rule"
-  },"99": {
-    "doc": "Getting Started",
-    "title": "Configure a Group rule",
-    "content": "There is a tutorial on setting up group rules in the Rules section, along with a working example in the API section. ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#configure-a-group-rule",
-    "relUrl": "/panther/getting-started#configure-a-group-rule"
-  },"100": {
-    "doc": "Getting Started",
-    "title": "Getting Started",
-    "content": " ",
-    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started",
-    "relUrl": "/panther/getting-started"
-  },"101": {
+    "url": "https://vinceoa.github.io/panther-docs/panther/console",
+    "relUrl": "/panther/console"
+  },"59": {
     "doc": "Rules",
     "title": "Overview",
     "content": "Rules control how log messages are turned into events. They can be used to discard, de-duplicate or modify the events that appear in the Panther console. Events are received from an external source, processed by user defined rules, and finally stored on the Panther server. ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules#overview",
     "relUrl": "/panther/rules#overview"
-  },"102": {
+  },"60": {
     "doc": "Rules",
     "title": "Processing order",
     "content": ". The set of Syslog Mappings are processed first, followed by the Global Rules and, finally, any optional Groups Rules. ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules#processing-order",
     "relUrl": "/panther/rules#processing-order"
-  },"103": {
+  },"61": {
     "doc": "Rules",
     "title": "Details",
     "content": "Each rule definition is stored in yaml file. A basic rule has a name followed by a Select verb, such as match, and an Action verb, such as discard: . name: 'Rule name' match: some_field: value discard: true . Multiple Selects are interpreted as logical “and” operations. This example is equivalent to “Select WHERE some_field matches the regular expression /value/ AND where other_field equals value”: . match: some_field: !!js/regexp /value/ equals: other_field: value . Multiple Actions can be specified too: . discard: true stop: true . A RuleSet, which groups the rules into logical areas, is made up of an array of Rules. These are processed in order, until the last rule is found or a stop or stop_ruleset action is encountered: . - name: 'Rule name' match: some_field: value set: new_field: 17 - name: 'No junk' equals: my_field: 'linux' set: that_field: 'Torvalds' . There are multiple RuleSets used during processing. The Global RuleSet is processed first, followed by any Group rules. Only one group will be matched, based on the Select verbs, and its rules then processed. Discard and Dedupe are shortcuts for what end up as rules that are placed before the rest of the RuleSet. ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules#details",
     "relUrl": "/panther/rules#details"
-  },"104": {
+  },"62": {
     "doc": "Rules",
     "title": "Rule Order",
     "content": "Rules are applied in the following order: . | Syslog mapping | Global discards | Global de-duplication | Global rules, in order | Grouping, and the group rules. (group_order: if required? TODO - check) . | discard_first | dedupe | rules | discard_last | . | Discards that rely on other mappings | . ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules#rule-order",
     "relUrl": "/panther/rules#rule-order"
-  },"105": {
+  },"63": {
     "doc": "Rules",
     "title": "Shortcut helpers",
     "content": "There are some tasks that are repeated frequently, so the most reqular have shortcuts set up to make the rules more succinct. TODO - not clear how or where to use these! . syslog_mapping . Takes the syslog levels and maps them to console severities. | This is a required field (TODO - what is?) | . deduplicate . Shortcut for matching on summary with a regex and replacing it. - [ /match/, 'replace' ] . Or supply a second regex if you want a more specific search replace . - [ /match/, /replace_match/, 'replace' ] . | A match will short-circuit dedupe execution, but continue on to any following rules. | . discard / discard_last . Shortcuts for dumping messages, either before or after normal processing. Discard on summary: . - '/trash/' . Or write a full rule . - name: 'To the bin' match: summary: /trash/ . | Discard will short-circuit execution. | . ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules#shortcut-helpers",
     "relUrl": "/panther/rules#shortcut-helpers"
-  },"106": {
+  },"64": {
     "doc": "Rules",
     "title": "Rules",
     "content": " ",
     "url": "https://vinceoa.github.io/panther-docs/panther/rules",
     "relUrl": "/panther/rules"
+  },"65": {
+    "doc": "Getting Started",
+    "title": "Introduction",
+    "content": "The (beta) cloud-based version of Panther is accessible at app.panther.support. After a simple Sign-up process your dedicated secure Panther instance will be automatically provisioned within the Panther Cloud. When signing-up you will be asked to choose a unique name for your Console which will then be accessible at https://{example}.app.panther.support. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#introduction",
+    "relUrl": "/panther/getting-started#introduction"
+  },"66": {
+    "doc": "Getting Started",
+    "title": "Using Panther for the First Time",
+    "content": "Logging in (app.panther.support) . Login for the first time as the admin user using the password you gave during Sign-up - this is the default user account that will be used to administer Panther for the first time. Additional users can then be created from the admin tab. Logging in (docker-compose.yml) . Note Instructions for launching the Docker images are on github.com/openanswers/panther-core . After starting the Panther containers for the first time an initial password will have been set. Unless configured that defaults will be: . | Username | admin | . | Password | admin | . This can be changed through the environment settings in docker-compose.yml e.g. event-console: ... environment: - ADMIN_USERNAME=admin - ADMIN_PASSWORD=admin - ADMIN_EMAIL=you@example.com . Welcome to the dashboard . The first screen that you will see is the Dashboard, which will look like this: . Clicking on Open Console will take you to the Console, which will look like this: . … this example shows that the Panther instance currently has two events in it. These particular messages are coming from the instance’s internal syslogd and http agents which will send periodic “keep-alive” events to indicate that they are healthy. Here, Agent http is alive and Agent syslogd are the details of the event, contained within the summary field (see next section). Double-click on an event to explore it a bit more. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#using-panther-for-the-first-time",
+    "relUrl": "/panther/getting-started#using-panther-for-the-first-time"
+  },"67": {
+    "doc": "Getting Started",
+    "title": "Anatomy of an Event",
+    "content": "A Panther Event is comprised of a number of data fields that are analagous to The Syslog Protocol. | Field | Meaning | Example value | . | _id | Internal Panther ID for the event | 5d8a4143f9f0b20100f778f9 | . | acknowledged | Indicates whether the event has been acknowledged | false | . | agent | The agent that received the event | syslogd | . | external_id | A reference to an external identifier (e.g. incident reference) | OA:12345 | . | first_occurrence | Date/time when the first event was received | 2019-09-24T16:16:03.825Z | . | last_occurrence | Date/time when the last event was received | 2019-10-04T12:22:49.063Z | . | group | Grouping applied to this event (determined by Group Rules) | Windows Servers | . | identifier | Unique identifier for this event (used for de-duplication) | 10740737389554512696 | . | node | Hostname of the device/server that originated the event | MYWINSERVER123 | . | owner | The Panther user that has taken ownership of this event | dave | . | severity | Event Severity (0-5) | 5 _(Warning)_ | . | state_change | Date/time when the last change to the event occurred | 2019-10-04T12:22:49.066Z | . | summary | Event details | ERROR_OUTOFMEMORY: Not enough storage is available to complete this operation | . | tag | Name of program or process that generated the event | Microsoft-Windows-Kernel-General | . | tally | Count of event occurrences | 1416 | . By default, a unique Event is defined by the combination of the fields: {node}:{severity}:{tag}:{summary}. Multiple events that have the same values for these fields will be treated as the same event, with a counter (tally) incremented for each occurrence. Simple Rules can be used to adjust the contents of these fields (for example, to remove unique data from the summary field) which allows Events to be de-duplicated and enriched, making them easy to manage. Double-click on an event and select Fields to see its full contents: . See also: . | Syslog Mappings | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#anatomy-of-an-event",
+    "relUrl": "/panther/getting-started#anatomy-of-an-event"
+  },"68": {
+    "doc": "Getting Started",
+    "title": "Set Up Event Sources",
+    "content": "There are currently two main methods to import event logs into Panther from client event sources. The most straightforward of these is by means of compatible logging software, while an HTTP based API is also available for integration with bespoke client applications. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#set-up-event-sources",
+    "relUrl": "/panther/getting-started#set-up-event-sources"
+  },"69": {
+    "doc": "Getting Started",
+    "title": "Logging Software",
+    "content": "Panther offers the capability to receive event logs directly from supported third-party logging software. In order to facilitate this, archives of configuration files are available for download from the Panther admin page. More detailed information on the download procedure is available, along with configuration guides for each supported system, in the client configuration section. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#logging-software",
+    "relUrl": "/panther/getting-started#logging-software"
+  },"70": {
+    "doc": "Getting Started",
+    "title": "REST API",
+    "content": "For use cases where programmatic control is needed over the submission of event log entries, Panther provides an HTTP based REST API, incorporating a key for security. More details on this are available in the API section. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#rest-api",
+    "relUrl": "/panther/getting-started#rest-api"
+  },"71": {
+    "doc": "Getting Started",
+    "title": "Graylog (future)",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#graylog-future",
+    "relUrl": "/panther/getting-started#graylog-future"
+  },"72": {
+    "doc": "Getting Started",
+    "title": "SNMP Trap (future)",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#snmp-trap-future",
+    "relUrl": "/panther/getting-started#snmp-trap-future"
+  },"73": {
+    "doc": "Getting Started",
+    "title": "Event Source Examples",
+    "content": "The freely available software packages listed below can act as event sources for Panther. | Software | Official Website | Panther Configuration | . | ![NXLog](/panther-docs/panther/getting-started/media/nxlog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://nxlog.co/documentation){:target=\"_blank\"} | [Linux](/panther-docs/panther/sending-events/nxlog#nxlog-configuration-linux), [Windows](/panther-docs/panther/sending-events/nxlog#nxlog-configuration-windows) | . | ![Rsyslog](/panther-docs/panther/getting-started/media/rsyslog-logo.png){:height=\"30px\" width=\"80px\"} | [Documentation](https://www.rsyslog.com/doc/master/index.html){:target=\"_blank\"} | [Linux](/panther-docs/panther/sending-events/rsyslog#rsyslog-configuration) | . | Syslog-ng | TODO | TODO | . | Log4j | TODO | TODO | . | Log4Net | TODO | TODO | . | ![AWS](/panther-docs/img/aws-white.png){:height=\"30px\"} | TODO | [Linux](/panther-docs/panther/sending-events/aws) | . Examples of approaches that can be used to monitor infrastructure and applications. | Technology | How | . | Linux | TODO | . | Windows | TODO | . | Cisco | TODO | . | MuleSoft Anypoint Platform | TODO | . | Dell Boomi | TODO | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#event-source-examples",
+    "relUrl": "/panther/getting-started#event-source-examples"
+  },"74": {
+    "doc": "Getting Started",
+    "title": "Configure a Global Rule",
+    "content": "Global rules are rules that will be applied to every event log that is received by Panther. By default, you will have some syslog rules and a simple example. There is a tutorial for adding further global rules in the Rules section. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#configure-a-global-rule",
+    "relUrl": "/panther/getting-started#configure-a-global-rule"
+  },"75": {
+    "doc": "Getting Started",
+    "title": "Configure a Group rule",
+    "content": "There is a tutorial on setting up group rules in the Rules section, along with a working example in the API section. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started#configure-a-group-rule",
+    "relUrl": "/panther/getting-started#configure-a-group-rule"
+  },"76": {
+    "doc": "Getting Started",
+    "title": "Getting Started",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/getting-started",
+    "relUrl": "/panther/getting-started"
+  },"77": {
+    "doc": "About",
+    "title": "Background",
+    "content": "Panther has been designed and developed by Open Answers to meet our operational needs and those of our customers, having provided support and system monitoring services over three decades. Within the open source and SaaS monitoring space there are myriads of monitoring tools available. The typical monitoring toolset implements active monitoring, where the status of a component is checked or a synthetic transaction is tested repeatedly on a schedule. The outcome of that probe/status check/transaction etc is an active monitoring event. A passive event is an event of interest within an application or system that is generally triggered by real system or user behaviour. See some Example Events. The typical IT operational support team needs an event management platform in its toolset - a console and dashboard where events of all kinds can be aggregated, managed and assessed - all configured through simple rules that help support teams decide what the priority events are and where action needs to be taken. In a constantly changing IT support environment, the take-on of new applications and systems to support means that it is not possible to predict what kind of events (logged messages, errors, exceptions etc) may occur during day to day operations. To deal with this uncertainty, effective support teams will devise ways to ensure that events generated by critical systems and applications are checked regularly, or as soon as they occur. The open source and SaaS monitoring tools landscape is lacking when it comes to monitoring events in this way. There has traditionally been a very limited choice of expensive and difficult to implement “Enterprise” event management tools of this type that may be categorised as “manager of managers”. More recently, Log Management tools have appeared on the market which provide a way to aggregate and search historical log information. These are effective for investigating issues but have the limitation that they are not efficient for use in first-line support scenarios. By surfacing events of all types in one place, in a way that makes them easy to manage, Panther provides the perfect complement to System Monitoring, Log Management, Time-series database and Ticketing tools. Example Events . | Event Type | Example | . | Business Event | Customer unable to make a purchase | . | Operating system event | Filesystem is full | . | Operational event | Scheduled job finished unsuccessfully | . | Security event | Suspicious behavior detected by Intrusion Detection System | . | Application event | Application generated exception | . | Hardware event | UPS battery low | . | Network event | Switch detected spanning-tree loop | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about#background",
+    "relUrl": "/panther/about#background"
+  },"78": {
+    "doc": "About",
+    "title": "Architecture",
+    "content": "The (beta) cloud-based version of Panther is a service that ingests events received from TLS-secured authenticated sources using the Syslog protocol or Panther API. The Console provides a rich set of features that allow you to manage events and configure the service using a web browser. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about#architecture",
+    "relUrl": "/panther/about#architecture"
+  },"79": {
+    "doc": "About",
+    "title": "ITSM Event Management",
+    "content": "Thousands (or millions) of events happen across your IT infrastructure every day. Why? Because an event is simply a change to the state of an IT service or configuration item (CI) that is significant to its management. A server moving from online to idle could be an event, or the completion of a regular server maintenance script, or even an unexpected state at the end of a transaction. They’re worth knowing about, and there may even be an action you wish to take as a result. The objective of event management is to detect events, analyse them, and determine the right control action (if any). By doing so, the event management process also provides a strong foundation for service assurance, reporting, and service improvement. It’s important to know, though, that monitoring and event management are not the same thing. Monitoring is certainly a component of event management, in that it is a useful way to detect events as they occur. Event management, on the other hand, is focused on extracting meaning out of events, to help IT take appropriate actions (when required). Panther is a monitoring tool that enables your IT service management Event Management process. Open Answers Event Management Flow: . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about#itsm-event-management",
+    "relUrl": "/panther/about#itsm-event-management"
+  },"80": {
+    "doc": "About",
+    "title": "ITSM Incident Management",
+    "content": "In IT service management (ITSM), an Incident management process ensures that normal service operation is restored as quickly as possible and the business impact is minimized after an unplanned interruption or reduction in quality to an IT service, or an event that could increase the risk of this happening. All incidents are events, but not all events are incidents. Event and Incident management activities performed by First line support personnel will frequently overlap when they involve the diagnosis, identification, logging, categorisation, prioritisation of incidents. Panther is a monitoring tool that enables your IT service management Incident Management process. Open Answers Event Management Flow: . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about#itsm-incident-management",
+    "relUrl": "/panther/about#itsm-incident-management"
+  },"81": {
+    "doc": "About",
+    "title": "Note",
+    "content": "ITIL® is an acronym that is often used in reference to describing IT service management practices. The term ITIL® should only be used to describe AXELOS’ proprietary form of IT service management. Previously owned by the Cabinet Office, ITIL® and IT Infrastructure Library® are now Registered Trade Marks of AXELOS Limited. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about#note",
+    "relUrl": "/panther/about#note"
+  },"82": {
+    "doc": "About",
+    "title": "About",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/about",
+    "relUrl": "/panther/about"
+  },"83": {
+    "doc": "Views",
+    "title": "Overview",
+    "content": ". Views provide simple, configurable match criteria which may be used with the console filters to narrow down the events displayed to useful sub-sets. For example, the Mine view provided by default displays events assigned to the current user. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#overview",
+    "relUrl": "/panther/views#overview"
+  },"84": {
+    "doc": "Views",
+    "title": "Adding Views",
+    "content": "Views may be added by completing the three input boxes at the bottom of the User Views list and clicking the Add button. All three boxes must be completed, as described below. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#adding-views",
+    "relUrl": "/panther/views#adding-views"
+  },"85": {
+    "doc": "Views",
+    "title": "Name",
+    "content": "This should be a short text string to be used as an identifier for the new view. This will be displayed both in the User Views list and in the View filter selection drop-down box at the top of the console page. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#name",
+    "relUrl": "/panther/views#name"
+  },"86": {
+    "doc": "Views",
+    "title": "Field",
+    "content": "The event field name, chosen from a drop-down list of available data elements, corresponds to one of the fields shown in the console events display area. This is the field which must match the specified value in order to be displayed in the new view. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#field",
+    "relUrl": "/panther/views#field"
+  },"87": {
+    "doc": "Views",
+    "title": "Value",
+    "content": "The value which the selected field must match in order to be displayed. There are three formats available. String . The default format is the exact value to match against the field content as a literal string. summary: Authentication failure . Regular Expression . Rather than literal string values, regular expressions may be specified by surrounding them with forward slash characters /. summary: /.*Authentication.*/ . Number . Some fields contain numeric values, which may be matched by specifying straightforward numbers. tally: 5 . To match numbers that are in fact strings, surround the required value in double quotes. summary: \"42\" . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#value",
+    "relUrl": "/panther/views#value"
+  },"88": {
+    "doc": "Views",
+    "title": "Deleting a View",
+    "content": "Views can be deleted by first clicking on them in the User Views list, then clicking on the red trash icon. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#deleting-a-view",
+    "relUrl": "/panther/views#deleting-a-view"
+  },"89": {
+    "doc": "Views",
+    "title": "The Default View",
+    "content": "It is also possible to configure a default view for the console page. To do this, click on the view in the User Views list, then click on the Set Default button. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views#the-default-view",
+    "relUrl": "/panther/views#the-default-view"
+  },"90": {
+    "doc": "Views",
+    "title": "Views",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/views",
+    "relUrl": "/panther/views"
+  },"91": {
+    "doc": "Dashboard",
+    "title": "Overview",
+    "content": "The dashboard provides an overview of the current contents of your event console. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#overview",
+    "relUrl": "/panther/dashboard#overview"
+  },"92": {
+    "doc": "Dashboard",
+    "title": "Severities",
+    "content": "At the top of the dashboard, there is a row of counters for events processed in the event logs associated with each severity. These counters reflect the number of unique events logged, and will not increase if the same event log is processed multiple times. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#severities",
+    "relUrl": "/panther/dashboard#severities"
+  },"93": {
+    "doc": "Dashboard",
+    "title": "Event Groups",
+    "content": "Counters are displayed in this section for events matching any created event groups – along with one special counter for events having no associated group and another for all events processed. The counters reflect the total numbers of unique event log entries in each of the respective groups, with the coloured bars representing the relative proportions of events having each of the severity levels. The actual numerical breakdowns can be inspected by moving the mouse pointer over each row. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#event-groups",
+    "relUrl": "/panther/dashboard#event-groups"
+  },"94": {
+    "doc": "Dashboard",
+    "title": "Activity Stream",
+    "content": "The activity stream logs user interaction with Panther, including: . | Event acknowledgements and unacknowledgements | Event assignments | Event severity changes | Event clearances | Event deletions | . ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#activity-stream",
+    "relUrl": "/panther/dashboard#activity-stream"
+  },"95": {
+    "doc": "Dashboard",
+    "title": "Inventory",
+    "content": "The inventory lists the names of hostnames that Panther has receieved events from and the last times they were seen. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard#inventory",
+    "relUrl": "/panther/dashboard#inventory"
+  },"96": {
+    "doc": "Dashboard",
+    "title": "Dashboard",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/dashboard",
+    "relUrl": "/panther/dashboard"
+  },"97": {
+    "doc": "API Console",
+    "title": "Introduction",
+    "content": ". The API Console is a straightforward way to begin using the Panther API to submit event logs over HTTP. The purpose of the page is to allow the supported API fields to be manually input and then automatically formatted into the JSON structure required by Panther. The result may then either be submitted to the application from the page or copied into another utility, such as curl - for which an example input is generated at the bottom of the page. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#introduction",
+    "relUrl": "/panther/api#introduction"
+  },"98": {
+    "doc": "API Console",
+    "title": "Creating an Event",
+    "content": "To prepare a new event definition for transmission to Panther, fill in the input fields in the top section of the Event API box. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#creating-an-event",
+    "relUrl": "/panther/api#creating-an-event"
+  },"99": {
+    "doc": "API Console",
+    "title": "API Key",
+    "content": "For security, the API requires a valid API key in order to accept event data. These can be generated by users in the administration group from the admin page. The API key input field is a drop-down list that contains the currently available keys. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#api-key",
+    "relUrl": "/panther/api#api-key"
+  },"100": {
+    "doc": "API Console",
+    "title": "Node",
+    "content": "The node is the host name that will be applied to the event log. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#node",
+    "relUrl": "/panther/api#node"
+  },"101": {
+    "doc": "API Console",
+    "title": "Tag",
+    "content": "The tag is a name used as meta-data to identify and distinguish between different applications on the same host, or any other similar purpose. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#tag",
+    "relUrl": "/panther/api#tag"
+  },"102": {
+    "doc": "API Console",
+    "title": "Summary",
+    "content": "The summary contains the message body of the event log. It describes the event that took place, and will give detailed information such as the error message or any diagnostics. It can also contain specific pieces of data about the event, such as the number of retries a failed login attempt was made. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#summary",
+    "relUrl": "/panther/api#summary"
+  },"103": {
+    "doc": "API Console",
+    "title": "Severity",
+    "content": "The severity indicates how important the event log is, and can range from 0 (clear) to 5 (emergency). ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#severity",
+    "relUrl": "/panther/api#severity"
+  },"104": {
+    "doc": "API Console",
+    "title": "Sending an Event",
+    "content": "Once the event fields have been filled in, the event can be sent to Panther by clicking on the Send button. The response will be displayed in the Response Body box at the bottom of the page. Alternatively, events can be sent using a different application by submitting the message displayed in the Request Body box as POST data to the address displayed in the URL box. One common method would be to use the example curl command line shown in the Curl box. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#sending-an-event",
+    "relUrl": "/panther/api#sending-an-event"
+  },"105": {
+    "doc": "API Console",
+    "title": "Example",
+    "content": "This example of sending an event log using the GUI on the API page will also show how the example group rule works to put a log containing FAILED su in its summary into the Operating System group. | Select an API key from the drop-down box. | To create an event that will handled by the Operating System group, the Tag for the event must be os and the Summary must include the string FAILED su for. The Node can be any string value, and the severity level can be any value from 0 to 5, because a new value will be set by the group rule. Notice that the contents of the Request Body and Curl sections change as the input fields are set. | Once fields have been set, click the Send button. The Response Body section will update with the reply from Panther, indicating whether the request was successful or if there was a problem. | If all went well, the new entry should be in the console along with all the other event logs. | . If the the custom group rule has been applied, the group will be set to Operating System and the severity will be set to 3 - which is also shown by the entry being displayed in yellow. ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api#example",
+    "relUrl": "/panther/api#example"
+  },"106": {
+    "doc": "API Console",
+    "title": "API Console",
+    "content": " ",
+    "url": "https://vinceoa.github.io/panther-docs/panther/api",
+    "relUrl": "/panther/api"
   },"107": {
     "doc": "Home",
     "title": "IT Support - First Line Operations",
