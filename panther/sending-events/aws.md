@@ -11,11 +11,11 @@ image: /img/panther_logo_thin_with_aws.png
 
 # AWS-Events2Panther
 
-This guide will quickly and easily allow a user to deploy an [AWS Lambda](https://aws.amazon.com/lambda/) function called AWS-Events2Panther to collect AWS events and send them to Panther using the [Panther REST API](../api/index.md), which is a general purpose API that can also be used from the command-line.
+This guide will quickly and easily allow a user to deploy an [AWS Lambda](https://aws.amazon.com/lambda/){:target="_blank"} function called AWS-Events2Panther to collect AWS events and send them to Panther using the [Panther REST API](../api/index.md), which is a general purpose API that can also be used from the command-line.
 
 AWS events are either region specific or global, depending on the service. Therefore, to get all events to your Panther Console you will have to deploy the AWS-Events2Panther Lambda function to each of your accounts and regions that you wish to monitor.
 
-The AWS-Events2Panther Lambda function [Node.js JavaScript code](https://github.com/OpenAnswers/panther-aws-events/blob/master/e2p/e2p.js) can be easily modified to support different AWS events, and/or send different data as part of the message, if required ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome ).
+The AWS-Events2Panther Lambda function [Node.js JavaScript code](https://github.com/OpenAnswers/panther-aws-events/blob/master/e2p/e2p.js){:target="_blank"} can be easily modified to support different AWS events, and/or send different data as part of the message, if required ( [Pull Requests](https://github.com/OpenAnswers/panther-aws-events/pulls){:target="_blank"} welcome ).
 
 Events can be sent to either an [app.panther.support](https://app.panther.support){:target="_blank"} SaaS instance or your own self-hosted [Dockerised container](https://hub.docker.com/repository/docker/openanswers/panther-console){:target="_blank"} deployment.
 
@@ -69,7 +69,7 @@ Internet -down-> Panther
 
 # Step-by-step
 
-The [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events) project is built and deployed to AWS using the Serverless Application Model (SAM):
+The [panther-aws-events](https://github.com/OpenAnswers/panther-aws-events){:target="_blank"} project is built and deployed to AWS using the Serverless Application Model (SAM):
 
 [docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html){:target="_blank"}
 
